@@ -1,0 +1,67 @@
+{
+    "swaggerVersion": "1.2",
+    "apiVersion": "0.1",
+    "basePath": "\/api",
+    "resourcePath": "\/v1-addresses",
+    "apis": [
+        {
+            "path": "\/v1\/addresses\/{type}",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Gets an Addresses for a given name and parentId",
+                    "nickname": "get_v1-addresses",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "type",
+                            "type": "string",
+                            "required": true
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "parentId",
+                            "type": "string",
+                            "description": "Parent id: city_id or street_id"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success",
+                            "responseModel": "[]"
+                        },
+                        {
+                            "code": 400,
+                            "message": "Parameters are not correct"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Request is not authorized"
+                        },
+                        {
+                            "code": 405,
+                            "message": "Method is not allowed"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ],
+                    "type": "[]"
+                }
+            ]
+        }
+    ],
+    "models": {
+        "[]": {
+            "id": "[]",
+            "description": "",
+            "properties": [],
+            "required": []
+        }
+    },
+    "produces": [],
+    "consumes": [],
+    "authorizations": []
+}

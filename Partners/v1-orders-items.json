@@ -1,0 +1,56 @@
+{
+    "swaggerVersion": "1.2",
+    "apiVersion": "0.1",
+    "basePath": "\/api",
+    "resourcePath": "\/v1-orders-items",
+    "apis": [
+        {
+            "path": "\/v1\/orders\/{orderNr}\/items",
+            "operations": [
+                {
+                    "method": "POST",
+                    "summary": "Add item to order from submitted data",
+                    "nickname": "post_v1-orders-items",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "orderNr",
+                            "type": "string",
+                            "required": true
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Ok"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Unauthorized"
+                        },
+                        {
+                            "code": 403,
+                            "message": "Forbidden"
+                        },
+                        {
+                            "code": 404,
+                            "message": "Not found"
+                        },
+                        {
+                            "code": 405,
+                            "message": "Method Not Allowed"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "models": [],
+    "produces": [],
+    "consumes": [],
+    "authorizations": []
+}

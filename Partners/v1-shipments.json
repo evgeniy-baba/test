@@ -1,0 +1,105 @@
+{
+    "swaggerVersion": "1.2",
+    "apiVersion": "0.1",
+    "basePath": "\/api",
+    "resourcePath": "\/v1-shipments",
+    "apis": [
+        {
+            "path": "\/v1\/shipments",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "List all shipments.",
+                    "nickname": "get_v1-shipments",
+                    "parameters": [
+                        {
+                            "paramType": "query",
+                            "name": "limit",
+                            "type": "string",
+                            "description": "How many shipments to return."
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "page",
+                            "type": "string",
+                            "description": "What page to return."
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "filter",
+                            "type": "string",
+                            "description": "Filter"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Partner is not authorized"
+                        },
+                        {
+                            "code": 405,
+                            "message": "Method is not allowed"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "\/v1\/shipments\/{shipmentId}",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "ALPHA. (Method can and will be changed. Do not use it). Gets a Shipment for a given id",
+                    "nickname": "get_v1-shipments",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "shipmentId",
+                            "type": "string",
+                            "required": true
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success",
+                            "responseModel": "SC.ShipmentBundle.Model.Shipment"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Is not authorized"
+                        },
+                        {
+                            "code": 405,
+                            "message": "Method is not allowed"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ],
+                    "type": "SC.ShipmentBundle.Model.Shipment"
+                }
+            ]
+        }
+    ],
+    "models": {
+        "SC.ShipmentBundle.Model.Shipment": {
+            "id": "SC.ShipmentBundle.Model.Shipment",
+            "description": "",
+            "properties": [],
+            "required": []
+        }
+    },
+    "produces": [],
+    "consumes": [],
+    "authorizations": []
+}

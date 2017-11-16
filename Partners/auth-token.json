@@ -1,0 +1,130 @@
+{
+    "swaggerVersion": "1.2",
+    "apiVersion": "0.1",
+    "basePath": "\/api",
+    "resourcePath": "\/auth-token",
+    "apis": [
+        {
+            "path": "\/auth\/token",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Gets an auth token",
+                    "nickname": "get_auth-token",
+                    "parameters": [
+                        {
+                            "paramType": "form",
+                            "name": "client_id",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "client_secret",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "grant_type",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "username",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "password",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "redirect_uri",
+                            "type": "string"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success",
+                            "responseModel": "[]"
+                        },
+                        {
+                            "code": 400,
+                            "message": "Invalid input"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Is not authorized"
+                        }
+                    ],
+                    "type": "[]"
+                },
+                {
+                    "method": "POST",
+                    "summary": "Gets an auth token",
+                    "nickname": "post_auth-token",
+                    "parameters": [
+                        {
+                            "paramType": "form",
+                            "name": "client_id",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "client_secret",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "grant_type",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "username",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "password",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "redirect_uri",
+                            "type": "string"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success",
+                            "responseModel": "[]"
+                        },
+                        {
+                            "code": 400,
+                            "message": "Invalid input"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Is not authorized"
+                        }
+                    ],
+                    "type": "[]"
+                }
+            ]
+        }
+    ],
+    "models": {
+        "[]": {
+            "id": "[]",
+            "description": "",
+            "properties": [],
+            "required": []
+        }
+    },
+    "produces": [],
+    "consumes": [],
+    "authorizations": []
+}

@@ -1,0 +1,81 @@
+{
+    "swaggerVersion": "1.2",
+    "apiVersion": "0.1",
+    "basePath": "\/api",
+    "resourcePath": "\/v1-stock-goods",
+    "apis": [
+        {
+            "path": "\/v1\/stock\/goods",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Get stock collection",
+                    "nickname": "get_v1-stock-goods",
+                    "parameters": [
+                        {
+                            "paramType": "query",
+                            "name": "limit",
+                            "type": "string",
+                            "description": null
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "page",
+                            "type": "string",
+                            "description": "What page to return."
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "withZeroQuantity",
+                            "type": "string",
+                            "description": "Include stock state entries with zero quantity"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "partnerCode",
+                            "type": "string",
+                            "description": "Partner code"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "sku",
+                            "type": "string",
+                            "description": "Array of skus"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success",
+                            "responseModel": "[.sku.sku1.quantity.5.sku.sku2.quantity.1.sku.sku3.quantity.3.]"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Partner is not authorized"
+                        },
+                        {
+                            "code": 405,
+                            "message": "Method is not allowed"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ],
+                    "type": "[.sku.sku1.quantity.5.sku.sku2.quantity.1.sku.sku3.quantity.3.]"
+                }
+            ]
+        }
+    ],
+    "models": {
+        "[.sku.sku1.quantity.5.sku.sku2.quantity.1.sku.sku3.quantity.3.]": {
+            "id": "[.sku.sku1.quantity.5.sku.sku2.quantity.1.sku.sku3.quantity.3.]",
+            "description": "",
+            "properties": [],
+            "required": []
+        }
+    },
+    "produces": [],
+    "consumes": [],
+    "authorizations": []
+}

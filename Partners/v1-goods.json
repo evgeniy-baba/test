@@ -1,0 +1,170 @@
+{
+    "swaggerVersion": "1.2",
+    "apiVersion": "0.1",
+    "basePath": "\/api",
+    "resourcePath": "\/v1-goods",
+    "apis": [
+        {
+            "path": "\/v1\/goods",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Get goods collection",
+                    "nickname": "get_v1-goods",
+                    "parameters": [
+                        {
+                            "paramType": "query",
+                            "name": "limit",
+                            "type": "string",
+                            "description": "How many goods to return."
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "page",
+                            "type": "string",
+                            "description": "What page to return."
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "filter",
+                            "type": "string",
+                            "description": "Filter"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "sort",
+                            "type": "string",
+                            "description": "Sorting"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success",
+                            "responseModel": "SC.ShipmentBundle.Entity.ShipmentItem"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Partner is not authorized"
+                        },
+                        {
+                            "code": 405,
+                            "message": "Method is not allowed"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ],
+                    "type": "SC.ShipmentBundle.Entity.ShipmentItem"
+                }
+            ]
+        },
+        {
+            "path": "\/v1\/goods\/{goodsId}",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Gets a Goods for a given id",
+                    "nickname": "get_v1-goods",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "goodsId",
+                            "type": "string",
+                            "required": true
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success",
+                            "responseModel": "SC.ShipmentBundle.Model.ShipmentItem"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Is not authorized"
+                        },
+                        {
+                            "code": 405,
+                            "message": "Method is not allowed"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ],
+                    "type": "SC.ShipmentBundle.Model.ShipmentItem"
+                }
+            ]
+        }
+    ],
+    "models": {
+        "SC.ShipmentBundle.Entity.ShipmentItem": {
+            "id": "SC.ShipmentBundle.Entity.ShipmentItem",
+            "description": "",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "DateTime",
+                    "format": "date-time"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "integer",
+                    "format": "int32"
+                },
+                "unitload": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "sku": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "orderNr": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "partnerOrderNr": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "weight": {
+                    "type": "number",
+                    "description": "float",
+                    "format": "float"
+                },
+                "length": {
+                    "type": "number",
+                    "description": "float",
+                    "format": "float"
+                },
+                "width": {
+                    "type": "number",
+                    "description": "float",
+                    "format": "float"
+                },
+                "height": {
+                    "type": "number",
+                    "description": "float",
+                    "format": "float"
+                },
+                "supplierSkuId": {
+                    "type": "string",
+                    "description": "string"
+                }
+            },
+            "required": []
+        },
+        "SC.ShipmentBundle.Model.ShipmentItem": {
+            "id": "SC.ShipmentBundle.Model.ShipmentItem",
+            "description": "",
+            "properties": [],
+            "required": []
+        }
+    },
+    "produces": [],
+    "consumes": [],
+    "authorizations": []
+}

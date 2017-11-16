@@ -1,0 +1,127 @@
+{
+    "swaggerVersion": "1.2",
+    "apiVersion": "0.1",
+    "basePath": "\/api",
+    "resourcePath": "\/v1-orders-customer",
+    "apis": [
+        {
+            "path": "\/v1\/orders\/{orderNr}\/customer",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "ALPHA. (Method can and will be changed. Do not use it). Get customer for Order",
+                    "nickname": "get_v1-orders-customer",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "orderNr",
+                            "type": "string",
+                            "required": true
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success",
+                            "responseModel": "SC.OrderBundle.Model.Customer"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Is not authorized"
+                        },
+                        {
+                            "code": 405,
+                            "message": "Method is not allowed"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ],
+                    "type": "SC.OrderBundle.Model.Customer"
+                },
+                {
+                    "method": "POST",
+                    "summary": "Create Customer",
+                    "nickname": "post_v1-orders-customer",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "orderNr",
+                            "type": "string",
+                            "required": true
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "customer_info_edit",
+                            "$ref": "SC.ApiBundle.Form.Order.CustomerInfoEditType",
+                            "type": "SC.ApiBundle.Form.Order.CustomerInfoEditType",
+                            "description": ""
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 202,
+                            "message": "Success"
+                        },
+                        {
+                            "code": 400,
+                            "message": "Invalid submitted data"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Is not authorized"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "models": {
+        "SC.OrderBundle.Model.Customer": {
+            "id": "SC.OrderBundle.Model.Customer",
+            "description": "",
+            "properties": [],
+            "required": []
+        },
+        "SC.ApiBundle.Form.Order.CustomerInfoEditType": {
+            "id": "SC.ApiBundle.Form.Order.CustomerInfoEditType",
+            "description": "object (CustomerInfoEditType)",
+            "properties": {
+                "firstName": {
+                    "type": "string",
+                    "description": "First name"
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name"
+                },
+                "middleName": {
+                    "type": "string",
+                    "description": "Middle name"
+                },
+                "phone": {
+                    "type": "string",
+                    "description": "Phone"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Email"
+                }
+            },
+            "required": [
+                "firstName",
+                "lastName",
+                "phone",
+                "email"
+            ]
+        }
+    },
+    "produces": [],
+    "consumes": [],
+    "authorizations": []
+}

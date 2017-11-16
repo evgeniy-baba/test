@@ -1,0 +1,230 @@
+{
+    "swaggerVersion": "1.2",
+    "apiVersion": "0.1",
+    "basePath": "\/api",
+    "resourcePath": "\/v1-orders-delivery-method",
+    "apis": [
+        {
+            "path": "\/v1\/orders\/{orderNr}\/delivery_method",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Get delivery method for Order",
+                    "nickname": "get_v1-orders-delivery-method",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "orderNr",
+                            "type": "string",
+                            "required": true
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success",
+                            "responseModel": "SC.OrderBundle.Model.DeliveryMethod"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Is not authorized"
+                        },
+                        {
+                            "code": 404,
+                            "message": "Order is not found"
+                        },
+                        {
+                            "code": 405,
+                            "message": "Method is not allowed"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ],
+                    "type": "SC.OrderBundle.Model.DeliveryMethod"
+                },
+                {
+                    "method": "GET",
+                    "summary": "Get delivery method for Order",
+                    "nickname": "get_v1-orders-delivery-method",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "orderNr",
+                            "type": "string",
+                            "required": true
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success",
+                            "responseModel": "SC.OrderBundle.Model.DeliveryMethod"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Is not authorized"
+                        },
+                        {
+                            "code": 404,
+                            "message": "Order is not found"
+                        },
+                        {
+                            "code": 405,
+                            "message": "Method is not allowed"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ],
+                    "type": "SC.OrderBundle.Model.DeliveryMethod"
+                },
+                {
+                    "method": "POST",
+                    "summary": "Set delivery method to order",
+                    "nickname": "post_v1-orders-delivery-method",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "orderNr",
+                            "type": "string",
+                            "required": true
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "delivery_method",
+                            "$ref": "SC.ApiBundle.Form.Order.DeliveryMethodType",
+                            "type": "SC.ApiBundle.Form.Order.DeliveryMethodType",
+                            "description": ""
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 202,
+                            "message": "Accepted"
+                        },
+                        {
+                            "code": 400,
+                            "message": "Form has errors; Can't set delivery method because address is not validated yet; Validation Failed"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Is not authorized"
+                        },
+                        {
+                            "code": 423,
+                            "message": "Server can't process the request just now"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ]
+                },
+                {
+                    "method": "POST",
+                    "summary": "Set delivery method to order",
+                    "nickname": "post_v1-orders-delivery-method",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "orderNr",
+                            "type": "string",
+                            "required": true
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "delivery_method",
+                            "$ref": "SC.ApiBundle.Form.Order.DeliveryMethodType",
+                            "type": "SC.ApiBundle.Form.Order.DeliveryMethodType",
+                            "description": ""
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 202,
+                            "message": "Accepted"
+                        },
+                        {
+                            "code": 400,
+                            "message": "Form has errors; Can't set delivery method because address is not validated yet; Validation Failed"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Is not authorized"
+                        },
+                        {
+                            "code": 423,
+                            "message": "Server can't process the request just now"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "models": {
+        "SC.OrderBundle.Model.DeliveryMethod": {
+            "id": "SC.OrderBundle.Model.DeliveryMethod",
+            "description": "",
+            "properties": [],
+            "required": []
+        },
+        "SC.ApiBundle.Form.Order.DeliveryMethodType": {
+            "id": "SC.ApiBundle.Form.Order.DeliveryMethodType",
+            "description": "object (DeliveryMethodType)",
+            "properties": {
+                "deliveryDate": {
+                    "type": "string",
+                    "description": "date",
+                    "format": "date"
+                },
+                "deliveryIntervalId": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "deliveryIntervalFrom": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "deliveryIntervalTo": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "shippingMethodCode": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "shippingMethodName": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "comment": {
+                    "type": "string",
+                    "description": "Comment"
+                },
+                "flatInterval": {
+                    "type": "string",
+                    "description": "string"
+                }
+            },
+            "required": [
+                "deliveryDate",
+                "deliveryIntervalId",
+                "deliveryIntervalFrom",
+                "deliveryIntervalTo",
+                "shippingMethodCode",
+                "shippingMethodName",
+                "flatInterval"
+            ]
+        }
+    },
+    "produces": [],
+    "consumes": [],
+    "authorizations": []
+}

@@ -1,0 +1,48 @@
+{
+    "swaggerVersion": "1.2",
+    "apiVersion": "0.1",
+    "basePath": "\/api",
+    "resourcePath": "\/v1-reports-invoice-stream",
+    "apis": [
+        {
+            "path": "\/v1\/reports\/invoice\/stream",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Invoice report.",
+                    "nickname": "get_v1-reports-invoice-stream",
+                    "parameters": [
+                        {
+                            "paramType": "query",
+                            "name": "partnerCode",
+                            "type": "string",
+                            "description": "Code of the partner"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "dateFrom",
+                            "type": "string",
+                            "description": "The start date for the report"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "dateTo",
+                            "type": "string",
+                            "description": "The end date for the report"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "models": [],
+    "produces": [],
+    "consumes": [],
+    "authorizations": []
+}

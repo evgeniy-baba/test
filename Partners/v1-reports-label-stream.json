@@ -1,0 +1,54 @@
+{
+    "swaggerVersion": "1.2",
+    "apiVersion": "0.1",
+    "basePath": "\/api",
+    "resourcePath": "\/v1-reports-label-stream",
+    "apis": [
+        {
+            "path": "\/v1\/reports\/label\/stream",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "",
+                    "nickname": "get_v1-reports-label-stream",
+                    "parameters": [
+                        {
+                            "paramType": "query",
+                            "name": "orderNr",
+                            "type": "string",
+                            "description": null
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "packBarcode",
+                            "type": "string",
+                            "description": null
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "paymentMethod",
+                            "type": "string",
+                            "description": null
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "multiPacks",
+                            "type": "string",
+                            "description": null
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "models": [],
+    "produces": [],
+    "consumes": [],
+    "authorizations": []
+}

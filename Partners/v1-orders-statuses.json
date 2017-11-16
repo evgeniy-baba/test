@@ -1,0 +1,96 @@
+{
+    "swaggerVersion": "1.2",
+    "apiVersion": "0.1",
+    "basePath": "\/api",
+    "resourcePath": "\/v1-orders-statuses",
+    "apis": [
+        {
+            "path": "\/v1\/orders\/{orderNr}\/statuses",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Get order status collection by orderNr",
+                    "nickname": "get_v1-orders-statuses",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "orderNr",
+                            "type": "string",
+                            "required": true
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "limit",
+                            "type": "string",
+                            "description": "How many items to return."
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "page",
+                            "type": "string",
+                            "description": "What page to return."
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success",
+                            "responseModel": "SC.OrderBundle.Entity.OrderStatusLog"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Is not authorized"
+                        },
+                        {
+                            "code": 404,
+                            "message": "Not found"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ],
+                    "type": "SC.OrderBundle.Entity.OrderStatusLog"
+                }
+            ]
+        }
+    ],
+    "models": {
+        "SC.OrderBundle.Entity.OrderStatusLog": {
+            "id": "SC.OrderBundle.Entity.OrderStatusLog",
+            "description": "",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "DateTime",
+                    "format": "date-time"
+                },
+                "statusName": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "reasonId": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "reasonName": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "location": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "integer",
+                    "format": "int32"
+                }
+            },
+            "required": []
+        }
+    },
+    "produces": [],
+    "consumes": [],
+    "authorizations": []
+}

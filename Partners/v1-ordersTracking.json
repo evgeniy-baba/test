@@ -1,0 +1,250 @@
+{
+    "swaggerVersion": "1.2",
+    "apiVersion": "0.1",
+    "basePath": "\/api",
+    "resourcePath": "\/v1-ordersTracking",
+    "apis": [
+        {
+            "path": "\/v1\/ordersTracking\/{trackingId}",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Get Orders Tracking.",
+                    "nickname": "get_v1-ordersTracking",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "trackingId",
+                            "type": "string",
+                            "required": true
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success",
+                            "responseModel": "SC.OrderBundle.Entity.Order"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Is not authorized"
+                        },
+                        {
+                            "code": 404,
+                            "message": "Order is not found"
+                        },
+                        {
+                            "code": 405,
+                            "message": "Method is not allowed"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ],
+                    "type": "SC.OrderBundle.Entity.Order"
+                }
+            ]
+        }
+    ],
+    "models": {
+        "SC.OrderBundle.Entity.Item": {
+            "id": "SC.OrderBundle.Entity.Item",
+            "description": "array of objects (Item)",
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "finalERPStatus": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "integer",
+                    "format": "int32"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "paidPrice": {
+                    "type": "number",
+                    "description": "float",
+                    "format": "float"
+                },
+                "sku": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "statusChangeReason": {
+                    "type": "string",
+                    "description": "string"
+                }
+            },
+            "required": []
+        },
+        "SC.OrderBundle.Entity.OrderAddress": {
+            "id": "SC.OrderBundle.Entity.OrderAddress",
+            "description": "object (OrderAddress)",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "integer",
+                    "format": "int32"
+                },
+                "zipcode": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "street": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "houseNum": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "apartment": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "cityId": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "streetId": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "buildingId": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "isValid": {
+                    "type": "boolean",
+                    "description": "boolean"
+                },
+                "isEditable": {
+                    "type": "boolean",
+                    "description": "boolean"
+                }
+            },
+            "required": []
+        },
+        "SC.OrderBundle.Entity.Order": {
+            "id": "SC.OrderBundle.Entity.Order",
+            "description": "",
+            "properties": {
+                "deprecatedId": {
+                    "type": "integer",
+                    "description": "integer",
+                    "format": "int32"
+                },
+                "orderNr": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "shippingType": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "isEditable": {
+                    "type": "boolean",
+                    "description": "boolean"
+                },
+                "comment": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "rejectPrice": {
+                    "type": "number",
+                    "description": "float",
+                    "format": "float"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "paymentMethod": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "fullSum": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "deliveryPrice": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "DateTime",
+                    "format": "date-time"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "DateTime",
+                    "format": "date-time"
+                },
+                "isConfirmed": {
+                    "type": "boolean",
+                    "description": "boolean"
+                },
+                "confirmationFailedReason": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "items": {
+                    "type": "array",
+                    "description": "array of objects (Item)",
+                    "items": {
+                        "$ref": "SC.OrderBundle.Entity.Item"
+                    }
+                },
+                "shippingAddress": {
+                    "$ref": "SC.OrderBundle.Entity.OrderAddress"
+                },
+                "paymentDate": {
+                    "type": "string",
+                    "description": "DateTime",
+                    "format": "date-time"
+                },
+                "itemQuantity": {
+                    "type": "integer",
+                    "description": "integer",
+                    "format": "int32"
+                },
+                "confirmationFailedCode": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "externalTrackingNumber": {
+                    "type": "array",
+                    "description": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": []
+        }
+    },
+    "produces": [],
+    "consumes": [],
+    "authorizations": []
+}

@@ -1,0 +1,233 @@
+{
+    "swaggerVersion": "1.2",
+    "apiVersion": "0.1",
+    "basePath": "\/api",
+    "resourcePath": "\/v1-nomenclatures",
+    "apis": [
+        {
+            "path": "\/v1\/nomenclatures",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Get all nomenclatures",
+                    "nickname": "get_v1-nomenclatures",
+                    "parameters": [
+                        {
+                            "paramType": "query",
+                            "name": "limit",
+                            "type": "string",
+                            "description": "How many nomanclatures to return."
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "page",
+                            "type": "string",
+                            "description": "What page to return."
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "filter",
+                            "type": "string",
+                            "description": "Filter"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "sort",
+                            "type": "string",
+                            "description": "Sorting"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Is not authorized"
+                        },
+                        {
+                            "code": 405,
+                            "message": "Method is not allowed"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ]
+                },
+                {
+                    "method": "POST",
+                    "summary": "Creates a new nomenclature",
+                    "nickname": "post_v1-nomenclatures",
+                    "parameters": [],
+                    "responseMessages": [
+                        {
+                            "code": 201,
+                            "message": "Nomenclature is created"
+                        },
+                        {
+                            "code": 400,
+                            "message": "Form has errors"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "\/v1\/nomenclatures\/{sku}",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Get nomenclature by sku",
+                    "nickname": "get_v1-nomenclatures",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "sku",
+                            "type": "string",
+                            "required": true
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success",
+                            "responseModel": "AppBundle.Module.Fulfilment.Entity.Nomenclature"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Is not authorized"
+                        },
+                        {
+                            "code": 404,
+                            "message": "Nomenclature is not found"
+                        },
+                        {
+                            "code": 405,
+                            "message": "Method is not allowed"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ],
+                    "type": "AppBundle.Module.Fulfilment.Entity.Nomenclature"
+                }
+            ]
+        }
+    ],
+    "models": {
+        "AppBundle.Module.Fulfilment.Entity.Nomenclature": {
+            "id": "AppBundle.Module.Fulfilment.Entity.Nomenclature",
+            "description": "",
+            "properties": {
+                "Nomenclature": {
+                    "type": null,
+                    "description": "object"
+                },
+                "category": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "sub_category": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "color": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "gender": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "urls": {
+                    "type": "array",
+                    "description": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "quantity": {
+                    "type": "integer",
+                    "description": "integer",
+                    "format": "int32"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "integer",
+                    "format": "int32"
+                },
+                "supplier_sku": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "sku": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "barcode": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "size_scale": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "supplier_size": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "size": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "materials": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "brand": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "country_of_origin": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "is_print_eac": {
+                    "type": "boolean",
+                    "description": "boolean"
+                },
+                "supplier_category": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "parent_sku": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "supplier_parent_sku": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "supplier_color": {
+                    "type": "string",
+                    "description": "string"
+                }
+            },
+            "required": []
+        }
+    },
+    "produces": [],
+    "consumes": [],
+    "authorizations": []
+}

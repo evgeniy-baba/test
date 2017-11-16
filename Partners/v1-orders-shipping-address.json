@@ -1,0 +1,199 @@
+{
+    "swaggerVersion": "1.2",
+    "apiVersion": "0.1",
+    "basePath": "\/api",
+    "resourcePath": "\/v1-orders-shipping-address",
+    "apis": [
+        {
+            "path": "\/v1\/orders\/{orderNr}\/shipping_address",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Get Order shipping address",
+                    "nickname": "get_v1-orders-shipping-address",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "orderNr",
+                            "type": "string",
+                            "required": true
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success",
+                            "responseModel": "SC.OrderBundle.Entity.OrderAddress"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Is not authorized"
+                        },
+                        {
+                            "code": 404,
+                            "message": "Page is not found"
+                        },
+                        {
+                            "code": 423,
+                            "message": "Can't validate address while previous wasn't set"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ],
+                    "type": "SC.OrderBundle.Entity.OrderAddress"
+                },
+                {
+                    "method": "POST",
+                    "summary": "Saves and validates order address",
+                    "nickname": "post_v1-orders-shipping-address",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "orderNr",
+                            "type": "string",
+                            "required": true
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "address_edit",
+                            "$ref": "SC.ApiBundle.Form.Order.AddressEditType",
+                            "type": "SC.ApiBundle.Form.Order.AddressEditType",
+                            "description": ""
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 202,
+                            "message": "Success"
+                        },
+                        {
+                            "code": 400,
+                            "message": "Incorrect address, it can't be validated; Form has errors"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Is not authorized"
+                        },
+                        {
+                            "code": 423,
+                            "message": "System can't accept new address just now"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "models": {
+        "SC.OrderBundle.Entity.OrderAddress": {
+            "id": "SC.OrderBundle.Entity.OrderAddress",
+            "description": "",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "integer",
+                    "format": "int32"
+                },
+                "zipcode": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "street": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "houseNum": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "apartment": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "cityId": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "streetId": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "buildingId": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "isValid": {
+                    "type": "boolean",
+                    "description": "boolean"
+                },
+                "isEditable": {
+                    "type": "boolean",
+                    "description": "boolean"
+                }
+            },
+            "required": []
+        },
+        "SC.ApiBundle.Form.Order.AddressEditType": {
+            "id": "SC.ApiBundle.Form.Order.AddressEditType",
+            "description": "object (AddressEditType)",
+            "properties": {
+                "zipcode": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "street": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "apartment": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "houseNum": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "cityId": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "streetId": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "buildingId": {
+                    "type": "string",
+                    "description": "string"
+                }
+            },
+            "required": [
+                "zipcode",
+                "city",
+                "street",
+                "houseNum",
+                "cityId",
+                "streetId"
+            ]
+        }
+    },
+    "produces": [],
+    "consumes": [],
+    "authorizations": []
+}

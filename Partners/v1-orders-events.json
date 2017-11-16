@@ -1,0 +1,161 @@
+{
+    "swaggerVersion": "1.2",
+    "apiVersion": "0.1",
+    "basePath": "\/api",
+    "resourcePath": "\/v1-orders-events",
+    "apis": [
+        {
+            "path": "\/v1\/orders\/{orderNr}\/events",
+            "operations": [
+                {
+                    "method": "POST",
+                    "summary": "Posts order event",
+                    "nickname": "post_v1-orders-events",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "orderNr",
+                            "type": "string",
+                            "required": true
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "order_event",
+                            "$ref": "SC.ApiBundle.Form.Order.OrderEventType",
+                            "type": "SC.ApiBundle.Form.Order.OrderEventType",
+                            "description": ""
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 201,
+                            "message": "Event for order was successfully created"
+                        },
+                        {
+                            "code": 400,
+                            "message": "Request has errors"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Is not authorized"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "\/v1\/orders\/{orderNr}\/events\/{eventId}",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Get Order event",
+                    "nickname": "get_v1-orders-events",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "orderNr",
+                            "type": "string",
+                            "required": true
+                        },
+                        {
+                            "paramType": "path",
+                            "name": "eventId",
+                            "type": "string",
+                            "required": true
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Successful",
+                            "responseModel": "SC.OrderBundle.Entity.OrderEvent"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Is not authorized"
+                        },
+                        {
+                            "code": 404,
+                            "message": "Order event is not found"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ],
+                    "type": "SC.OrderBundle.Entity.OrderEvent"
+                }
+            ]
+        }
+    ],
+    "models": {
+        "SC.ApiBundle.Form.Order.OrderEventType": {
+            "id": "SC.ApiBundle.Form.Order.OrderEventType",
+            "description": "object (OrderEventType)",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Event types (confirm, cancel)"
+                },
+                "data": {
+                    "type": "string",
+                    "description": "Data for the event"
+                }
+            },
+            "required": [
+                "type",
+                "data"
+            ]
+        },
+        "SC.OrderBundle.Entity.OrderEvent": {
+            "id": "SC.OrderBundle.Entity.OrderEvent",
+            "description": "",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "integer",
+                    "format": "int32"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "DateTime",
+                    "format": "date-time"
+                },
+                "data": {
+                    "type": "array",
+                    "description": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "errors": {
+                    "type": "array",
+                    "description": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": []
+        }
+    },
+    "produces": [],
+    "consumes": [],
+    "authorizations": []
+}

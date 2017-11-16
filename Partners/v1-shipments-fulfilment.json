@@ -1,0 +1,184 @@
+{
+    "swaggerVersion": "1.2",
+    "apiVersion": "0.1",
+    "basePath": "\/api",
+    "resourcePath": "\/v1-shipments-fulfilment",
+    "apis": [
+        {
+            "path": "\/v1\/shipments\/fulfilment",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Get fulfilment shipments collection",
+                    "nickname": "get_v1-shipments-fulfilment",
+                    "parameters": [
+                        {
+                            "paramType": "query",
+                            "name": "limit",
+                            "type": "string",
+                            "description": "How many items to return."
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "page",
+                            "type": "string",
+                            "description": "What page to return."
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "filter",
+                            "type": "string",
+                            "description": "Filter"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "sort",
+                            "type": "string",
+                            "description": "Sorting"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Ok",
+                            "responseModel": "AppBundle.Module.Fulfilment.Entity.FulfilmentShipment"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Unauthorized"
+                        },
+                        {
+                            "code": 403,
+                            "message": "Forbidden"
+                        },
+                        {
+                            "code": 404,
+                            "message": "Not found"
+                        },
+                        {
+                            "code": 405,
+                            "message": "Method Not Allowed"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ],
+                    "type": "AppBundle.Module.Fulfilment.Entity.FulfilmentShipment"
+                },
+                {
+                    "method": "POST",
+                    "summary": "Creates a new fulfilment shipment",
+                    "nickname": "post_v1-shipments-fulfilment",
+                    "parameters": [],
+                    "responseMessages": [
+                        {
+                            "code": 201,
+                            "message": "Fulfilment shipment is created"
+                        },
+                        {
+                            "code": 400,
+                            "message": "Form has errors"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "\/v1\/shipments\/fulfilment\/{id}",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Get fulfilment shipment by id",
+                    "nickname": "get_v1-shipments-fulfilment",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "id",
+                            "type": "string",
+                            "required": true
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success",
+                            "responseModel": "AppBundle.Module.Fulfilment.Entity.FulfilmentShipment"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Is not authorized"
+                        },
+                        {
+                            "code": 404,
+                            "message": "FulfilmentShipment is not found"
+                        },
+                        {
+                            "code": 405,
+                            "message": "Method is not allowed"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ],
+                    "type": "AppBundle.Module.Fulfilment.Entity.FulfilmentShipment"
+                }
+            ]
+        }
+    ],
+    "models": {
+        "SC.StateMachineBundle.Entity.State": {
+            "id": "SC.StateMachineBundle.Entity.State",
+            "description": "object (State)",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "integer",
+                    "format": "int32"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "sort": {
+                    "type": "integer",
+                    "description": "integer",
+                    "format": "int32"
+                }
+            },
+            "required": []
+        },
+        "AppBundle.Module.Fulfilment.Entity.FulfilmentShipment": {
+            "id": "AppBundle.Module.Fulfilment.Entity.FulfilmentShipment",
+            "description": "",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "integer",
+                    "format": "int32"
+                },
+                "date": {
+                    "type": "string",
+                    "description": "DateTime",
+                    "format": "date-time"
+                },
+                "shipmentId": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "status": {
+                    "$ref": "SC.StateMachineBundle.Entity.State"
+                }
+            },
+            "required": []
+        }
+    },
+    "produces": [],
+    "consumes": [],
+    "authorizations": []
+}

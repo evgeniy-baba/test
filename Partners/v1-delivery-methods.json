@@ -1,0 +1,100 @@
+{
+    "swaggerVersion": "1.2",
+    "apiVersion": "0.1",
+    "basePath": "\/api",
+    "resourcePath": "\/v1-delivery-methods",
+    "apis": [
+        {
+            "path": "\/v1\/delivery_methods",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Get available delivery methods for order or by delivery params",
+                    "nickname": "get_v1-delivery-methods",
+                    "parameters": [
+                        {
+                            "paramType": "query",
+                            "name": "order_id",
+                            "type": "string",
+                            "description": "Order id"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "address_object_id",
+                            "type": "string",
+                            "description": "Address object id"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "partner_code",
+                            "type": "string",
+                            "description": "Partner code"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "latitude",
+                            "type": "string",
+                            "description": "Latitude"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "longitude",
+                            "type": "string",
+                            "description": "Longitude"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "item_count",
+                            "type": "string",
+                            "description": "Number of items"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "cart_amount",
+                            "type": "string",
+                            "description": "Total cost for purchase"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "country",
+                            "type": "string",
+                            "description": "Delivery country"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "weight",
+                            "type": "string",
+                            "description": "Weight of the shipping container"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Successful"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Not authorized"
+                        },
+                        {
+                            "code": 404,
+                            "message": "Is not found"
+                        },
+                        {
+                            "code": 405,
+                            "message": "Method is not allowed"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "models": [],
+    "produces": [],
+    "consumes": [],
+    "authorizations": []
+}

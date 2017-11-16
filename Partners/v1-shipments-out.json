@@ -1,0 +1,216 @@
+{
+    "swaggerVersion": "1.2",
+    "apiVersion": "0.1",
+    "basePath": "\/api",
+    "resourcePath": "\/v1-shipments-out",
+    "apis": [
+        {
+            "path": "\/v1\/shipments\/out",
+            "operations": [
+                {
+                    "method": "POST",
+                    "summary": "Creates a new shipment from the submitted data.",
+                    "nickname": "post_v1-shipments-out",
+                    "parameters": [
+                        {
+                            "paramType": "form",
+                            "name": "shipment",
+                            "$ref": "SC.ApiBundle.Form.Shipment.Out.ShipmentType",
+                            "type": "SC.ApiBundle.Form.Shipment.Out.ShipmentType",
+                            "description": ""
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Success"
+                        },
+                        {
+                            "code": 400,
+                            "message": "Form has errors"
+                        },
+                        {
+                            "code": 401,
+                            "message": "Is not authorized"
+                        },
+                        {
+                            "code": 405,
+                            "message": "Method is not allowed"
+                        },
+                        {
+                            "code": 500,
+                            "message": "Internal server error"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "models": {
+        "SC.ApiBundle.Form.Shipment.Out.ItemType": {
+            "id": "SC.ApiBundle.Form.Shipment.Out.ItemType",
+            "description": "array of objects (ItemType)",
+            "properties": {
+                "sku": {
+                    "type": "string",
+                    "description": "Item SKU"
+                },
+                "unitload": {
+                    "type": "string",
+                    "description": "Unique unitload"
+                },
+                "orderNr": {
+                    "type": "string",
+                    "description": "Order number"
+                },
+                "weight": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "length": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "width": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "height": {
+                    "type": "string",
+                    "description": "string"
+                }
+            },
+            "required": [
+                "sku",
+                "unitload",
+                "orderNr"
+            ]
+        },
+        "SC.ApiBundle.Form.Shipment.Out.PackType": {
+            "id": "SC.ApiBundle.Form.Shipment.Out.PackType",
+            "description": "array of objects (PackType)",
+            "properties": {
+                "barcode": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "items": {
+                    "type": "array",
+                    "description": "array of objects (ItemType)",
+                    "items": {
+                        "$ref": "SC.ApiBundle.Form.Shipment.Out.ItemType"
+                    }
+                },
+                "weight": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "length": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "width": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "height": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "partner": {
+                    "type": "string",
+                    "description": "string"
+                }
+            },
+            "required": [
+                "barcode",
+                "type",
+                "items"
+            ]
+        },
+        "SC.ApiBundle.Form.Shipment.Out.PalletType": {
+            "id": "SC.ApiBundle.Form.Shipment.Out.PalletType",
+            "description": "array of objects (PalletType)",
+            "properties": {
+                "barcode": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "partner": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "containers": {
+                    "type": "array",
+                    "description": "array of objects (PackType)",
+                    "items": {
+                        "$ref": "SC.ApiBundle.Form.Shipment.Out.PackType"
+                    }
+                }
+            },
+            "required": [
+                "barcode",
+                "type",
+                "containers"
+            ]
+        },
+        "SC.ApiBundle.Form.Shipment.Out.ShipmentType": {
+            "id": "SC.ApiBundle.Form.Shipment.Out.ShipmentType",
+            "description": "object (ShipmentType)",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "source": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "destination": {
+                    "type": "string",
+                    "description": "string"
+                },
+                "shippedAt": {
+                    "type": "string",
+                    "description": "datetime",
+                    "format": "date-time"
+                },
+                "containers": {
+                    "type": "array",
+                    "description": "array of objects (PalletType)",
+                    "items": {
+                        "$ref": "SC.ApiBundle.Form.Shipment.Out.PalletType"
+                    }
+                },
+                "partner": {
+                    "type": "string",
+                    "description": "string"
+                }
+            },
+            "required": [
+                "id",
+                "type",
+                "source",
+                "destination",
+                "shippedAt",
+                "containers",
+                "partner"
+            ]
+        }
+    },
+    "produces": [],
+    "consumes": [],
+    "authorizations": []
+}
