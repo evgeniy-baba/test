@@ -1,0 +1,240 @@
+{
+  "host": "raw.githubusercontent.com",
+  "basePath": "/api",
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "title": "raw.githubusercontent.com",
+    "version": "0.1"
+  },
+  "paths": {
+    "/v1/ordersTracking/{trackingId}": {
+      "get": {
+        "produces": [],
+        "consumes": [],
+        "operationId": "get_v1-ordersTracking",
+        "summary": "Get Orders Tracking.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "trackingId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SC.OrderBundle.Entity.Order"
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "404": {
+            "description": "Order is not found"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SC.OrderBundle.Entity.Item": {
+      "description": "array of objects (Item)",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "string"
+        },
+        "finalERPStatus": {
+          "type": "string",
+          "description": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "integer"
+        },
+        "paidPrice": {
+          "type": "number",
+          "format": "float",
+          "description": "float"
+        },
+        "sku": {
+          "type": "string",
+          "description": "string"
+        },
+        "status": {
+          "type": "string",
+          "description": "string"
+        },
+        "statusChangeReason": {
+          "type": "string",
+          "description": "string"
+        }
+      }
+    },
+    "SC.OrderBundle.Entity.Order": {
+      "properties": {
+        "comment": {
+          "type": "string",
+          "description": "string"
+        },
+        "confirmationFailedCode": {
+          "type": "string",
+          "description": "string"
+        },
+        "confirmationFailedReason": {
+          "type": "string",
+          "description": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "DateTime"
+        },
+        "deliveryPrice": {
+          "type": "string",
+          "description": "string"
+        },
+        "deprecatedId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "integer"
+        },
+        "externalTrackingNumber": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "array"
+        },
+        "fullSum": {
+          "type": "string",
+          "description": "string"
+        },
+        "id": {
+          "type": "string",
+          "description": "string"
+        },
+        "isConfirmed": {
+          "type": "boolean",
+          "description": "boolean"
+        },
+        "isEditable": {
+          "type": "boolean",
+          "description": "boolean"
+        },
+        "itemQuantity": {
+          "type": "integer",
+          "format": "int32",
+          "description": "integer"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SC.OrderBundle.Entity.Item"
+          },
+          "description": "array of objects (Item)"
+        },
+        "orderNr": {
+          "type": "string",
+          "description": "string"
+        },
+        "paymentDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "DateTime"
+        },
+        "paymentMethod": {
+          "type": "string",
+          "description": "string"
+        },
+        "rejectPrice": {
+          "type": "number",
+          "format": "float",
+          "description": "float"
+        },
+        "shippingAddress": {
+          "$ref": "#/definitions/SC.OrderBundle.Entity.OrderAddress"
+        },
+        "shippingType": {
+          "type": "string",
+          "description": "string"
+        },
+        "status": {
+          "type": "string",
+          "description": "string"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "DateTime"
+        }
+      }
+    },
+    "SC.OrderBundle.Entity.OrderAddress": {
+      "description": "object (OrderAddress)",
+      "properties": {
+        "apartment": {
+          "type": "string",
+          "description": "string"
+        },
+        "buildingId": {
+          "type": "string",
+          "description": "string"
+        },
+        "city": {
+          "type": "string",
+          "description": "string"
+        },
+        "cityId": {
+          "type": "string",
+          "description": "string"
+        },
+        "houseNum": {
+          "type": "string",
+          "description": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "integer"
+        },
+        "isEditable": {
+          "type": "boolean",
+          "description": "boolean"
+        },
+        "isValid": {
+          "type": "boolean",
+          "description": "boolean"
+        },
+        "region": {
+          "type": "string",
+          "description": "string"
+        },
+        "street": {
+          "type": "string",
+          "description": "string"
+        },
+        "streetId": {
+          "type": "string",
+          "description": "string"
+        },
+        "zipcode": {
+          "type": "string",
+          "description": "string"
+        }
+      }
+    }
+  }
+}

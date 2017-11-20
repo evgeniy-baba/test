@@ -1,0 +1,155 @@
+{
+  "host": "raw.githubusercontent.com",
+  "basePath": "/api",
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "title": "raw.githubusercontent.com",
+    "version": "0.1"
+  },
+  "paths": {
+    "/v1/goods": {
+      "get": {
+        "produces": [],
+        "consumes": [],
+        "operationId": "get_v1-goods",
+        "summary": "Get goods collection",
+        "parameters": [
+          {
+            "in": "query",
+            "description": "How many goods to return.",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "What page to return.",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Filter",
+            "name": "filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Sorting",
+            "name": "sort",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SC.ShipmentBundle.Entity.ShipmentItem"
+            }
+          },
+          "401": {
+            "description": "Partner is not authorized"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/goods/{goodsId}": {
+      "get": {
+        "produces": [],
+        "consumes": [],
+        "operationId": "get_v1-goods",
+        "summary": "Gets a Goods for a given id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "goodsId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SC.ShipmentBundle.Model.ShipmentItem"
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SC.ShipmentBundle.Entity.ShipmentItem": {
+      "properties": {
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "DateTime"
+        },
+        "height": {
+          "type": "number",
+          "format": "float",
+          "description": "float"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "integer"
+        },
+        "length": {
+          "type": "number",
+          "format": "float",
+          "description": "float"
+        },
+        "orderNr": {
+          "type": "string",
+          "description": "string"
+        },
+        "partnerOrderNr": {
+          "type": "string",
+          "description": "string"
+        },
+        "sku": {
+          "type": "string",
+          "description": "string"
+        },
+        "supplierSkuId": {
+          "type": "string",
+          "description": "string"
+        },
+        "unitload": {
+          "type": "string",
+          "description": "string"
+        },
+        "weight": {
+          "type": "number",
+          "format": "float",
+          "description": "float"
+        },
+        "width": {
+          "type": "number",
+          "format": "float",
+          "description": "float"
+        }
+      }
+    },
+    "SC.ShipmentBundle.Model.ShipmentItem": {}
+  }
+}

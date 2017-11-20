@@ -1,0 +1,169 @@
+{
+  "host": "raw.githubusercontent.com",
+  "basePath": "/api",
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "title": "raw.githubusercontent.com",
+    "version": "0.1"
+  },
+  "paths": {
+    "/v1/shipments/fulfilment": {
+      "get": {
+        "produces": [],
+        "consumes": [],
+        "operationId": "get_v1-shipments-fulfilment",
+        "summary": "Get fulfilment shipments collection",
+        "parameters": [
+          {
+            "in": "query",
+            "description": "How many items to return.",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "What page to return.",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Filter",
+            "name": "filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Sorting",
+            "name": "sort",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/AppBundle.Module.Fulfilment.Entity.FulfilmentShipment"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "405": {
+            "description": "Method Not Allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "produces": [],
+        "consumes": [],
+        "operationId": "post_v1-shipments-fulfilment",
+        "summary": "Creates a new fulfilment shipment",
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          },
+          "201": {
+            "description": "Fulfilment shipment is created"
+          },
+          "400": {
+            "description": "Form has errors"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/shipments/fulfilment/{id}": {
+      "get": {
+        "produces": [],
+        "consumes": [],
+        "operationId": "get_v1-shipments-fulfilment",
+        "summary": "Get fulfilment shipment by id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AppBundle.Module.Fulfilment.Entity.FulfilmentShipment"
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "404": {
+            "description": "FulfilmentShipment is not found"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "AppBundle.Module.Fulfilment.Entity.FulfilmentShipment": {
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "DateTime"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "integer"
+        },
+        "shipmentId": {
+          "type": "string",
+          "description": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/SC.StateMachineBundle.Entity.State"
+        }
+      }
+    },
+    "SC.StateMachineBundle.Entity.State": {
+      "description": "object (State)",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "integer"
+        },
+        "name": {
+          "type": "string",
+          "description": "string"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "integer"
+        }
+      }
+    }
+  }
+}

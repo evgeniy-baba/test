@@ -1,0 +1,150 @@
+{
+  "host": "raw.githubusercontent.com",
+  "basePath": "/api",
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "title": "raw.githubusercontent.com",
+    "version": "0.1"
+  },
+  "paths": {
+    "/v1/orders/{orderNr}/events": {
+      "post": {
+        "produces": [],
+        "consumes": [],
+        "operationId": "post_v1-orders-events",
+        "summary": "Posts order event",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderNr",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "order_event",
+            "type": "SC.ApiBundle.Form.Order.OrderEventType"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          },
+          "201": {
+            "description": "Event for order was successfully created"
+          },
+          "400": {
+            "description": "Request has errors"
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/orders/{orderNr}/events/{eventId}": {
+      "get": {
+        "produces": [],
+        "consumes": [],
+        "operationId": "get_v1-orders-events",
+        "summary": "Get Order event",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderNr",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "eventId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "schema": {
+              "$ref": "#/definitions/SC.OrderBundle.Entity.OrderEvent"
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "404": {
+            "description": "Order event is not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SC.ApiBundle.Form.Order.OrderEventType": {
+      "description": "object (OrderEventType)",
+      "required": [
+        "type",
+        "data"
+      ],
+      "properties": {
+        "data": {
+          "type": "string",
+          "description": "Data for the event"
+        },
+        "type": {
+          "type": "string",
+          "description": "Event types (confirm, cancel)"
+        }
+      }
+    },
+    "SC.OrderBundle.Entity.OrderEvent": {
+      "properties": {
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "DateTime"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "array"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "array"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "integer"
+        },
+        "message": {
+          "type": "string",
+          "description": "string"
+        },
+        "name": {
+          "type": "string",
+          "description": "string"
+        },
+        "status": {
+          "type": "string",
+          "description": "string"
+        }
+      }
+    }
+  }
+}

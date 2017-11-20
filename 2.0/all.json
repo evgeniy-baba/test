@@ -1,0 +1,3197 @@
+{
+  "host": "api-demo-b2b.lamoda.ru",
+  "basePath": "/api",
+  "info": {
+    "title": "B2B Lamoda API body",
+    "version": "0.1"
+  },
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0",
+  "paths": {
+    "/auth/token": {
+      "get": {
+        "tags": [
+          "auth"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_auth-token",
+        "summary": "Gets an auth token",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "client_id",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "client_secret",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "grant_type",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "password",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "redirect_uri",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AuthToken"
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Is not authorized"
+          }
+        }
+      }
+    },
+    "/v1/addresses/city": {
+      "get": {
+        "tags": [
+          "addresses"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-addresses-city",
+        "summary": "Gets an Addresses for a given name and parentId",
+        "parameters": [
+          {
+            "in": "query",
+            "description": "City name",
+            "name": "name",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "text": {
+                        "type": "string"
+                      },
+                      "text_extended": {
+                        "type": "string"
+                      },
+                      "zipcode": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parameters are not correct"
+          },
+          "401": {
+            "description": "Request is not authorized"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/addresses/street": {
+      "get": {
+        "tags": [
+          "addresses"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-addresses-street",
+        "summary": "Gets an Addresses for a given name and parentId",
+        "parameters": [
+          {
+            "in": "query",
+            "description": "Street name",
+            "name": "name",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "description": "Parent id: city_id or street_id",
+            "name": "parentId",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "text": {
+                        "type": "string"
+                      },
+                      "zipcode": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parameters are not correct"
+          },
+          "401": {
+            "description": "Request is not authorized"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/addresses/building": {
+      "get": {
+        "tags": [
+          "addresses"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-addresses-building",
+        "summary": "Gets an Addresses for a given name and parentId",
+        "parameters": [
+          {
+            "in": "query",
+            "description": "What we are looking for?",
+            "name": "name",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "description": "Parent id: city_id or street_id",
+            "name": "parentId",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "text": {
+                        "type": "string"
+                      },
+                      "zipcode": {
+                        "type": "string"
+                      },
+                      "coordinates": {
+                        "type": "object",
+                        "properties": {
+                          "latitude": {
+                            "type": "string"
+                          },
+                          "longitude": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parameters are not correct"
+          },
+          "401": {
+            "description": "Request is not authorized"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/delivery_methods": {
+      "get": {
+        "tags": [
+          "delivery_methods"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-delivery-methods",
+        "summary": "Get available delivery methods for order or by delivery params",
+        "parameters": [
+          {
+            "in": "query",
+            "description": "Order id",
+            "name": "order_id",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Address object id",
+            "name": "address_object_id",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Partner code",
+            "name": "partner_code",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Latitude",
+            "name": "latitude",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Longitude",
+            "name": "longitude",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Number of items",
+            "name": "item_count",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Total cost for purchase",
+            "name": "cart_amount",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Delivery country",
+            "name": "country",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Weight of the shipping container",
+            "name": "weight",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DeliveryMethod"
+              }
+            }
+          },
+          "401": {
+            "description": "Not authorized"
+          },
+          "404": {
+            "description": "Is not found"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/goods": {
+      "get": {
+        "tags": [
+          "goods"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-goods",
+        "summary": "Get goods collection",
+        "parameters": [
+          {
+            "in": "query",
+            "description": "How many goods to return.",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "What page to return.",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Filter",
+            "name": "filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Sorting",
+            "name": "sort",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "page": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                },
+                "pages": {
+                  "type": "integer"
+                },
+                "total": {
+                  "type": "integer"
+                },
+                "_links": {
+                  "$ref": "#/definitions/_links"
+                },
+                "_embedded": {
+                  "$ref": "#/definitions/Goods.embedded"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Partner is not authorized"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/goods/{goodsId}": {
+      "get": {
+        "tags": [
+          "goods"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-goods-goodsId",
+        "summary": "Gets a Goods for a given id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "goodsId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "page": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                },
+                "pages": {
+                  "type": "integer"
+                },
+                "total": {
+                  "type": "integer"
+                },
+                "_links": {
+                  "$ref": "#/definitions/_links"
+                },
+                "_embedded": {
+                  "$ref": "#/definitions/StockGoods.embedded"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/nomenclatures": {
+      "get": {
+        "tags": [
+          "nomenclatures"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-nomenclatures",
+        "summary": "Get all nomenclatures",
+        "parameters": [
+          {
+            "in": "query",
+            "description": "How many nomanclatures to return.",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "What page to return.",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Filter",
+            "name": "filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Sorting",
+            "name": "sort",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "page": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                },
+                "pages": {
+                  "type": "integer"
+                },
+                "total": {
+                  "type": "integer"
+                },
+                "_links": {
+                  "$ref": "#/definitions/_links"
+                },
+                "_embedded": {
+                  "$ref": "#/definitions/Nomenclature.Short"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "nomenclatures"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "post_v1-nomenclatures",
+        "summary": "Creates a new nomenclature",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "nomenclatures_edit",
+            "schema": {
+              "$ref": "#/definitions/Nomeclatures.Post"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/Nomenclature.Short"
+            }
+          },
+          "201": {
+            "description": "Nomenclature is created"
+          },
+          "400": {
+            "description": "Form has errors"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/nomenclatures/{sku}": {
+      "get": {
+        "tags": [
+          "nomenclatures"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-nomenclatures-sku",
+        "summary": "Get nomenclature by sku",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "sku",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Nomenclature.Full"
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "404": {
+            "description": "Nomenclature is not found"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/orders": {
+      "get": {
+        "tags": [
+          "orders"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-orders",
+        "summary": "Get order collection",
+        "parameters": [
+          {
+            "in": "query",
+            "description": "How many orders to return.",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "What page to return.",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Filter",
+            "name": "filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Sorting",
+            "name": "sort",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "orders"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "post_v1-orders",
+        "summary": "Creates a new order from submitted data.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "orders_edit",
+            "schema": {
+              "$ref": "#/definitions/Orders.Post"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order is created and will be confirmed"
+          },
+          "201": {
+            "description": "Order is created",
+            "schema": {
+              "$ref": "#/definitions/Orders.Created"
+            }
+          },
+          "400": {
+            "description": "Form has errors"
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "422": {
+            "description": "Order is valid, but can't be confirmed automatically"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/orders/{orderNr}": {
+      "get": {
+        "tags": [
+          "orders"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-orders-orderNr",
+        "summary": "Gets a Order for a given id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderNr",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "404": {
+            "description": "Order is not found"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "orders"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "put_v1-orders",
+        "summary": "Update an Order from submitted data.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderNr",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "404": {
+            "description": "Order is not found"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/orders/{orderNr}/customer": {
+      "get": {
+        "tags": [
+          "orders"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-orders-customer",
+        "summary": "ALPHA. (Method can and will be changed. Do not use it). Get customer for Order",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderNr",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Order.Customer"
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "orders"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "post_v1-orders-customer",
+        "summary": "Create Customer",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderNr",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "customer_info_edit",
+            "schema": {
+              "$ref": "#/definitions/Order.CustomerInfoEditType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/Order.Customer"
+            }
+          },
+          "202": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Invalid submitted data"
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/orders/{orderNr}/delivery_method": {
+      "get": {
+        "tags": [
+          "orders"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-orders-delivery-method",
+        "summary": "Get delivery method for Order",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderNr",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Order.DeliveryMethod"
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "404": {
+            "description": "Order is not found"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "orders"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "post_v1-orders-delivery-method",
+        "summary": "Set delivery method to order",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderNr",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "delivery_method",
+            "schema": {
+              "$ref": "#/definitions/Order.DeliveryMethodType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/Order.DeliveryMethod"
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          },
+          "400": {
+            "description": "Form has errors; Can't set delivery method because address is not validated yet; Validation Failed"
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "423": {
+            "description": "Server can't process the request just now"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/orders/{orderNr}/events": {
+      "post": {
+        "tags": [
+          "orders"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "post_v1-orders-events",
+        "summary": "Posts order event",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderNr",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "order_event",
+            "schema": {
+              "$ref": "#/definitions/Order.EventType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          },
+          "201": {
+            "description": "Event for order was successfully created"
+          },
+          "400": {
+            "description": "Request has errors"
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/orders/{orderNr}/events/{eventId}": {
+      "get": {
+        "tags": [
+          "orders"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-orders-events",
+        "summary": "Get Order event",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderNr",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "eventId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "schema": {
+              "$ref": "#/definitions/Order.Event"
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "404": {
+            "description": "Order event is not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/orders/{orderNr}/shipping_address": {
+      "get": {
+        "tags": [
+          "orders"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-orders-shipping-address",
+        "summary": "Get Order shipping address",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderNr",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Order.Address"
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "404": {
+            "description": "Page is not found"
+          },
+          "423": {
+            "description": "Can't validate address while previous wasn't set"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "orders"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "post_v1-orders-shipping-address",
+        "summary": "Saves and validates order address",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderNr",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "address_edit",
+            "schema": {
+              "$ref": "#/definitions/Order.AddressEditType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "$ref": "#/definitions/Order.Address"
+            }
+          },
+          "202": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Incorrect address, it can`t be validated; Form has errors"
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "423": {
+            "description": "System can't accept new address just now"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/orders/{orderNr}/statuses": {
+      "get": {
+        "tags": [
+          "orders"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-orders-statuses",
+        "summary": "Get order status collection by orderNr",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderNr",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "How many items to return.",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "What page to return.",
+            "name": "page",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Order.StatusLog"
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/ordersTracking/{trackingId}": {
+      "get": {
+        "tags": [
+          "tracking"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-ordersTracking",
+        "summary": "Get Orders Tracking.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "trackingId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "404": {
+            "description": "Order is not found"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/packsTracking/{packBarcode}": {
+      "get": {
+        "tags": [
+          "tracking"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-packsTracking",
+        "summary": "Get Packs Tracking.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "packBarcode",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "404": {
+            "description": "Order is not found"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/shipments": {
+      "get": {
+        "tags": [
+          "shipments"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-shipments",
+        "summary": "List all shipments.",
+        "parameters": [
+          {
+            "in": "query",
+            "description": "How many shipments to return.",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "What page to return.",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Filter",
+            "name": "filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "page": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                },
+                "pages": {
+                  "type": "integer"
+                },
+                "total": {
+                  "type": "integer"
+                },
+                "_links": {
+                  "$ref": "#/definitions/_links"
+                },
+                "_embedded": {
+                  "type": "object",
+                  "properties": {
+                    "shipments": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/Shipments"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Partner is not authorized"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/shipments/{shipmentId}": {
+      "get": {
+        "tags": [
+          "shipments"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-shipments-shipmentId",
+        "summary": "ALPHA. (Method can and will be changed. Do not use it). Gets a Shipment for a given id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "shipmentId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Shipments"
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/shipments/fulfilment": {
+      "get": {
+        "tags": [
+          "shipments"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-shipments-fulfilment",
+        "summary": "Get fulfilment shipments collection",
+        "parameters": [
+          {
+            "in": "query",
+            "description": "How many items to return.",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "What page to return.",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Filter",
+            "name": "filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Sorting",
+            "name": "sort",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "page": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                },
+                "pages": {
+                  "type": "integer"
+                },
+                "total": {
+                  "type": "integer"
+                },
+                "_links": {
+                  "$ref": "#/definitions/_links"
+                },
+                "_embedded": {
+                  "$ref": "#/definitions/Fulfilment.Shipment"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "405": {
+            "description": "Method Not Allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "shipments"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "post_v1-shipments-fulfilment",
+        "summary": "Creates a new fulfilment shipment",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "orders_edit",
+            "schema": {
+              "$ref": "#/definitions/Shipments.Fulfilment"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "integer"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "DateTime"
+                },
+                "shipmentId": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Fulfilment shipment is created"
+          },
+          "400": {
+            "description": "Form has errors"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/shipments/fulfilment/{id}": {
+      "get": {
+        "tags": [
+          "shipments"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-shipments-fulfilment-id",
+        "summary": "Get fulfilment shipment by id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Fulfilment.Shipment"
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "404": {
+            "description": "FulfilmentShipment is not found"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/shipments/out": {
+      "post": {
+        "tags": [
+          "shipments"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "post_v1-shipments-out",
+        "summary": "Creates a new shipment from the submitted data.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "shipment",
+            "schema": {
+              "$ref": "#/definitions/SC.ApiBundle.Form.Shipment.Out.ShipmentType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Shipments"
+            }
+          },
+          "400": {
+            "description": "Form has errors"
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/stock/goods": {
+      "get": {
+        "tags": [
+          "goods"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-stock-goods",
+        "summary": "Get stock collection",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "What page to return.",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Include stock state entries with zero quantity",
+            "name": "withZeroQuantity",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Partner code",
+            "name": "partnerCode",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Array of skus",
+            "name": "sku",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "page": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                },
+                "pages": {
+                  "type": "integer"
+                },
+                "total": {
+                  "type": "integer"
+                },
+                "_links": {
+                  "$ref": "#/definitions/_links"
+                },
+                "_embedded": {
+                  "$ref": "#/definitions/StockGoods.embedded"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Partner is not authorized"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Shipment.Item": {
+      "properties": {
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "DateTime"
+        },
+        "height": {
+          "type": "number",
+          "format": "float",
+          "description": "float"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "integer"
+        },
+        "length": {
+          "type": "number",
+          "format": "float",
+          "description": "float"
+        },
+        "orderNr": {
+          "type": "string",
+          "description": "string"
+        },
+        "partnerOrderNr": {
+          "type": "string",
+          "description": "string"
+        },
+        "sku": {
+          "type": "string",
+          "description": "string"
+        },
+        "supplierSkuId": {
+          "type": "string",
+          "description": "string"
+        },
+        "unitload": {
+          "type": "string",
+          "description": "string"
+        },
+        "weight": {
+          "type": "number",
+          "format": "float",
+          "description": "float"
+        },
+        "width": {
+          "type": "number",
+          "format": "float",
+          "description": "float"
+        }
+      }
+    },
+    "Order.Item": {
+      "description": "array of objects (Item)",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "string"
+        },
+        "finalERPStatus": {
+          "type": "string",
+          "description": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "integer"
+        },
+        "paidPrice": {
+          "type": "number",
+          "format": "float",
+          "description": "float"
+        },
+        "sku": {
+          "type": "string",
+          "description": "string"
+        },
+        "status": {
+          "type": "string",
+          "description": "string"
+        },
+        "statusChangeReason": {
+          "type": "string",
+          "description": "string"
+        }
+      }
+    },
+    "Order": {
+      "properties": {
+        "comment": {
+          "type": "string",
+          "description": "string"
+        },
+        "confirmationFailedCode": {
+          "type": "string",
+          "description": "string"
+        },
+        "confirmationFailedReason": {
+          "type": "string",
+          "description": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "DateTime"
+        },
+        "deliveryPrice": {
+          "type": "string",
+          "description": "string"
+        },
+        "deprecatedId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "integer"
+        },
+        "externalTrackingNumber": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "array"
+        },
+        "fullSum": {
+          "type": "string",
+          "description": "string"
+        },
+        "id": {
+          "type": "string",
+          "description": "string"
+        },
+        "isConfirmed": {
+          "type": "boolean",
+          "description": "boolean"
+        },
+        "isEditable": {
+          "type": "boolean",
+          "description": "boolean"
+        },
+        "itemQuantity": {
+          "type": "integer",
+          "format": "int32",
+          "description": "integer"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Order.Item"
+          },
+          "description": "array of objects (Item)"
+        },
+        "orderNr": {
+          "type": "string",
+          "description": "string"
+        },
+        "paymentDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "DateTime"
+        },
+        "paymentMethod": {
+          "type": "string",
+          "description": "string"
+        },
+        "rejectPrice": {
+          "type": "number",
+          "format": "float",
+          "description": "float"
+        },
+        "shippingAddress": {
+          "$ref": "#/definitions/Order.Address"
+        },
+        "shippingType": {
+          "type": "string",
+          "description": "string"
+        },
+        "status": {
+          "type": "string",
+          "description": "string"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "DateTime"
+        }
+      }
+    },
+    "Order.Address": {
+      "description": "object (OrderAddress)",
+      "properties": {
+        "apartment": {
+          "type": "string",
+          "description": "string"
+        },
+        "buildingId": {
+          "type": "string",
+          "description": "string"
+        },
+        "city": {
+          "type": "string",
+          "description": "string"
+        },
+        "cityId": {
+          "type": "string",
+          "description": "string"
+        },
+        "houseNum": {
+          "type": "string",
+          "description": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "integer"
+        },
+        "isEditable": {
+          "type": "boolean",
+          "description": "boolean"
+        },
+        "isValid": {
+          "type": "boolean",
+          "description": "boolean"
+        },
+        "region": {
+          "type": "string",
+          "description": "string"
+        },
+        "street": {
+          "type": "string",
+          "description": "string"
+        },
+        "streetId": {
+          "type": "string",
+          "description": "string"
+        },
+        "zipcode": {
+          "type": "string",
+          "description": "string"
+        }
+      }
+    },
+    "Order.AddressEditType": {
+      "description": "object (AddressEditType)",
+      "required": [
+        "zipcode",
+        "city",
+        "street",
+        "houseNum",
+        "cityId",
+        "streetId"
+      ],
+      "properties": {
+        "apartment": {
+          "type": "string",
+          "description": "string"
+        },
+        "buildingId": {
+          "type": "string",
+          "description": "string"
+        },
+        "city": {
+          "type": "string",
+          "description": "string"
+        },
+        "cityId": {
+          "type": "string",
+          "description": "string"
+        },
+        "houseNum": {
+          "type": "string",
+          "description": "string"
+        },
+        "street": {
+          "type": "string",
+          "description": "string"
+        },
+        "streetId": {
+          "type": "string",
+          "description": "string"
+        },
+        "zipcode": {
+          "type": "string",
+          "description": "string"
+        }
+      }
+    },
+    "Order.CustomerInfoEditType": {
+      "description": "object (CustomerInfoEditType)",
+      "required": [
+        "firstName",
+        "lastName",
+        "phone",
+        "email"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Email"
+        },
+        "firstName": {
+          "type": "string",
+          "description": "First name"
+        },
+        "lastName": {
+          "type": "string",
+          "description": "Last name"
+        },
+        "middleName": {
+          "type": "string",
+          "description": "Middle name"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Phone"
+        }
+      }
+    },
+    "Order.DeliveryMethodType": {
+      "description": "object (DeliveryMethodType)",
+      "required": [
+        "deliveryDate",
+        "deliveryIntervalId",
+        "deliveryIntervalFrom",
+        "deliveryIntervalTo",
+        "shippingMethodCode",
+        "shippingMethodName",
+        "flatInterval"
+      ],
+      "properties": {
+        "comment": {
+          "type": "string",
+          "description": "Comment"
+        },
+        "deliveryDate": {
+          "type": "string",
+          "format": "date",
+          "description": "date"
+        },
+        "deliveryIntervalFrom": {
+          "type": "string",
+          "description": "string"
+        },
+        "deliveryIntervalId": {
+          "type": "string",
+          "description": "string"
+        },
+        "deliveryIntervalTo": {
+          "type": "string",
+          "description": "string"
+        },
+        "flatInterval": {
+          "type": "string",
+          "description": "string"
+        },
+        "shippingMethodCode": {
+          "type": "string",
+          "description": "string"
+        },
+        "shippingMethodName": {
+          "type": "string",
+          "description": "string"
+        }
+      }
+    },
+    "Order.DeliveryMethod": {
+      "properties": {
+        "deliveryPrice": {
+          "type": "string"
+        },
+        "deliveryDate": {
+          "type": "string"
+        },
+        "deliveryIntervalFrom": {
+          "type": "string"
+        },
+        "deliveryIntervalTo": {
+          "type": "string"
+        },
+        "deliveryIntervalId": {
+          "type": "integer"
+        },
+        "shippingMethodName": {
+          "type": "string"
+        },
+        "shippingMethodCode": {
+          "type": "string"
+        },
+        "isEditable": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Order.EventType": {
+      "description": "object (OrderEventType)",
+      "required": [
+        "type",
+        "data"
+      ],
+      "properties": {
+        "data": {
+          "type": "string",
+          "description": "Data for the event"
+        },
+        "type": {
+          "type": "string",
+          "description": "Event types (confirm, cancel)"
+        }
+      }
+    },
+    "Order.Event": {
+      "properties": {
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "DateTime"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "array"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "array"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "integer"
+        },
+        "message": {
+          "type": "string",
+          "description": "string"
+        },
+        "name": {
+          "type": "string",
+          "description": "string"
+        },
+        "status": {
+          "type": "string",
+          "description": "string"
+        }
+      }
+    },
+    "Order.StatusLog": {
+      "properties": {
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "DateTime"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "integer"
+        },
+        "location": {
+          "type": "string",
+          "description": "string"
+        },
+        "reasonId": {
+          "type": "string",
+          "description": "string"
+        },
+        "reasonName": {
+          "type": "string",
+          "description": "string"
+        },
+        "statusName": {
+          "type": "string",
+          "description": "string"
+        }
+      }
+    },
+    "Nomenclature.Full": {
+      "properties": {
+        "category": {
+          "type": "string",
+          "description": "string"
+        },
+        "sub_category": {
+          "type": "string",
+          "description": "string"
+        },
+        "color": {
+          "type": "string",
+          "description": "string"
+        },
+        "gender": {
+          "type": "string",
+          "description": "string"
+        },
+        "urls": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "array"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32",
+          "description": "integer"
+        },
+        "supplier_sku": {
+          "type": "string",
+          "description": "string"
+        },
+        "sku": {
+          "type": "string",
+          "description": "string"
+        },
+        "barcode": {
+          "type": "string",
+          "description": "string"
+        },
+        "name": {
+          "type": "string",
+          "description": "string"
+        },
+        "size_scale": {
+          "type": "string",
+          "description": "string"
+        },
+        "supplier_size": {
+          "type": "string",
+          "description": "string"
+        },
+        "size": {
+          "type": "string",
+          "description": "string"
+        },
+        "materials": {
+          "type": "string",
+          "description": "string"
+        },
+        "brand": {
+          "type": "string",
+          "description": "string"
+        },
+        "country_of_origin": {
+          "type": "string",
+          "description": "string"
+        },
+        "is_print_eac": {
+          "type": "boolean",
+          "description": "boolean"
+        },
+        "supplier_category": {
+          "type": "string",
+          "description": "string"
+        },
+        "parent_sku": {
+          "type": "string",
+          "description": "string"
+        },
+        "supplier_parent_sku": {
+          "type": "string",
+          "description": "string"
+        },
+        "supplier_color": {
+          "type": "string",
+          "description": "string"
+        },
+        "_embedded": {
+          "$ref": "#/definitions/Partner.embedded"
+        }
+      }
+    },
+    "Nomenclature.Short": {
+      "type": "object",
+      "properties": {
+        "nomenclatures": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "color": {
+                "type": "string",
+                "description": "string"
+              },
+              "quantity": {
+                "type": "integer",
+                "format": "int32",
+                "description": "integer"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "supplier_sku": {
+                "type": "string",
+                "description": "string"
+              },
+              "sku": {
+                "type": "string",
+                "description": "string"
+              },
+              "barcode": {
+                "type": "string",
+                "description": "string"
+              },
+              "name": {
+                "type": "string",
+                "description": "string"
+              },
+              "supplier_size": {
+                "type": "string",
+                "description": "string"
+              },
+              "_embedded": {
+                "$ref": "#/definitions/Partner.embedded"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Fulfilment.Shipment": {
+      "type": "object",
+      "properties": {
+        "fulfilment_shipments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int32",
+                "description": "integer"
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time",
+                "description": "DateTime"
+              },
+              "shipmentId": {
+                "type": "string",
+                "description": "string"
+              },
+              "status": {
+                "$ref": "#/definitions/State"
+              },
+              "_embedded": {
+                "$ref": "#/definitions/Partner.embedded"
+              }
+            }
+          }
+        }
+      }
+    },
+    "State": {
+      "description": "object (State)",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "integer"
+        },
+        "name": {
+          "type": "string",
+          "description": "string"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "integer"
+        }
+      }
+    },
+    "SC.ApiBundle.Form.Shipment.Out.ItemType": {
+      "description": "array of objects (ItemType)",
+      "required": [
+        "sku",
+        "unitload",
+        "orderNr"
+      ],
+      "properties": {
+        "height": {
+          "type": "string",
+          "description": "string"
+        },
+        "length": {
+          "type": "string",
+          "description": "string"
+        },
+        "orderNr": {
+          "type": "string",
+          "description": "Order number"
+        },
+        "sku": {
+          "type": "string",
+          "description": "Item SKU"
+        },
+        "unitload": {
+          "type": "string",
+          "description": "Unique unitload"
+        },
+        "weight": {
+          "type": "string",
+          "description": "string"
+        },
+        "width": {
+          "type": "string",
+          "description": "string"
+        }
+      }
+    },
+    "SC.ApiBundle.Form.Shipment.Out.PackType": {
+      "description": "array of objects (PackType)",
+      "required": [
+        "barcode",
+        "type",
+        "items"
+      ],
+      "properties": {
+        "barcode": {
+          "type": "string",
+          "description": "string"
+        },
+        "height": {
+          "type": "string",
+          "description": "string"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SC.ApiBundle.Form.Shipment.Out.ItemType"
+          },
+          "description": "array of objects (ItemType)"
+        },
+        "length": {
+          "type": "string",
+          "description": "string"
+        },
+        "partner": {
+          "type": "string",
+          "description": "string"
+        },
+        "type": {
+          "type": "string",
+          "description": "string"
+        },
+        "weight": {
+          "type": "string",
+          "description": "string"
+        },
+        "width": {
+          "type": "string",
+          "description": "string"
+        }
+      }
+    },
+    "SC.ApiBundle.Form.Shipment.Out.PalletType": {
+      "description": "array of objects (PalletType)",
+      "required": [
+        "barcode",
+        "type",
+        "containers"
+      ],
+      "properties": {
+        "barcode": {
+          "type": "string",
+          "description": "string"
+        },
+        "containers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SC.ApiBundle.Form.Shipment.Out.PackType"
+          },
+          "description": "array of objects (PackType)"
+        },
+        "partner": {
+          "type": "string",
+          "description": "string"
+        },
+        "type": {
+          "type": "string",
+          "description": "string"
+        }
+      }
+    },
+    "SC.ApiBundle.Form.Shipment.Out.ShipmentType": {
+      "description": "object (ShipmentType)",
+      "required": [
+        "id",
+        "type",
+        "source",
+        "destination",
+        "shippedAt",
+        "containers",
+        "partner"
+      ],
+      "properties": {
+        "containers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SC.ApiBundle.Form.Shipment.Out.PalletType"
+          },
+          "description": "array of objects (PalletType)"
+        },
+        "destination": {
+          "type": "string",
+          "description": "string"
+        },
+        "id": {
+          "type": "string",
+          "description": "string"
+        },
+        "partner": {
+          "type": "string",
+          "description": "string"
+        },
+        "shippedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "datetime"
+        },
+        "source": {
+          "type": "string",
+          "description": "string"
+        },
+        "type": {
+          "type": "string",
+          "description": "string"
+        }
+      }
+    },
+    "AuthToken": {
+      "type": "object",
+      "properties": {
+        "access_token": {
+          "type": "string"
+        },
+        "expires_in": {
+          "type": "integer"
+        },
+        "token_type": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Tag"
+      }
+    },
+    "Goods.embedded": {
+      "type": "object",
+      "properties": {
+        "goods": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "createdAt": {
+                "type": "string",
+                "format": "date"
+              },
+              "palletBarcode": {
+                "type": "string"
+              },
+              "packBarcode": {
+                "type": "string"
+              },
+              "orderId": {
+                "type": "integer"
+              },
+              "id": {
+                "type": "string"
+              },
+              "unitload": {
+                "type": "string"
+              },
+              "sku": {
+                "type": "string"
+              },
+              "orderNr": {
+                "type": "string"
+              },
+              "partnerOrderNr": {
+                "type": "string"
+              },
+              "weight": {
+                "type": "number"
+              },
+              "length": {
+                "type": "number"
+              },
+              "width": {
+                "type": "string"
+              },
+              "height": {
+                "type": "string"
+              },
+              "supplierSkuId": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "DeliveryMethod": {
+      "type": "object",
+      "properties": {
+        "methodTypeCode": {
+          "type": "string"
+        },
+        "methodTypeName": {
+          "type": "string"
+        },
+        "serviceLevelTypeCode": {
+          "type": "string"
+        },
+        "serviceLevelTypeName": {
+          "type": "string"
+        },
+        "serviceLevelTypeDescription": {
+          "type": "string"
+        },
+        "checkoutMethodCode": {
+          "type": "string"
+        },
+        "checkoutMethodName": {
+          "type": "string"
+        },
+        "checkoutMethodCategoryName": {
+          "type": "string"
+        },
+        "checkoutMethodCheckoutDescription": {
+          "type": "string"
+        },
+        "checkoutMethodHasHorizon": {
+          "type": "boolean"
+        },
+        "checkoutMethodHasIntervals": {
+          "type": "boolean"
+        },
+        "checkoutMethodIsClientNameRequired": {
+          "type": "boolean"
+        },
+        "checkoutMethodDeliveryPrice": {
+          "type": "number"
+        },
+        "checkoutMethodFreeDeliveryNetThreshold": {
+          "type": "number"
+        },
+        "dayDate": {
+          "type": "string"
+        },
+        "intervalId": {
+          "type": "integer"
+        },
+        "intervalStart": {
+          "type": "string"
+        },
+        "intervalEnd": {
+          "type": "string"
+        }
+      }
+    },
+    "_links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string"
+            }
+          }
+        },
+        "first": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string"
+            }
+          }
+        },
+        "last": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string"
+            }
+          }
+        },
+        "previous": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "StockGoods.embedded": {
+      "type": "object",
+      "properties": {
+        "stockStates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sku": {
+                "type": "string"
+              },
+              "quantity": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Partner.embedded": {
+      "type": "object",
+      "properties": {
+        "partner": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            },
+            "shopName": {
+              "type": "string"
+            },
+            "partnerId": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "Nomeclatures.Post": {
+      "description": "object (NomenclaturesEditType)",
+      "required": [
+        "sku",
+        "barcode",
+        "name",
+        "size",
+        "color",
+        "brand",
+        "category"
+      ],
+      "properties": {
+        "sku": {
+          "type": "string",
+          "description": "string"
+        },
+        "parentSku": {
+          "type": "string",
+          "description": "string"
+        },
+        "barcode": {
+          "type": "string",
+          "description": "string"
+        },
+        "name": {
+          "type": "string",
+          "description": "string"
+        },
+        "size": {
+          "type": "string",
+          "description": "string"
+        },
+        "color": {
+          "type": "string",
+          "description": "string"
+        },
+        "brand": {
+          "type": "string",
+          "description": "string"
+        },
+        "category": {
+          "type": "string",
+          "description": "string"
+        },
+        "isPrintEAC": {
+          "type": "string",
+          "description": "string"
+        },
+        "imageUrls": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "order": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Orders.Post": {
+      "description": "object (OrdersEditType)",
+      "required": [
+        "shippingType",
+        "orderNr",
+        "paymentMethod",
+        "customerInfo"
+      ],
+      "properties": {
+        "orderNr": {
+          "type": "string",
+          "description": "string"
+        },
+        "deliveryDate": {
+          "type": "string",
+          "description": "string"
+        },
+        "deliveryIntervalFrom": {
+          "type": "string",
+          "description": "string"
+        },
+        "deliveryIntervalTo": {
+          "type": "string",
+          "description": "string"
+        },
+        "paymentMethod": {
+          "type": "string",
+          "description": "string"
+        },
+        "shippingType": {
+          "type": "string",
+          "description": "string"
+        },
+        "comment": {
+          "type": "string",
+          "description": "string"
+        },
+        "customerInfo": {
+          "type": "object",
+          "required": [
+            "firstName",
+            "lastName",
+            "phone",
+            "email"
+          ],
+          "properties": {
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "middleName": {
+              "type": "string"
+            },
+            "phone": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            }
+          }
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "sku",
+              "description",
+              "paidPrice",
+              "price"
+            ],
+            "properties": {
+              "sku": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "cogsPrice": {
+                "type": "number"
+              },
+              "paidPrice": {
+                "type": "number",
+                "format": "float",
+                "description": "float"
+              },
+              "price": {
+                "type": "number"
+              },
+              "totalDiscount": {
+                "type": "string"
+              },
+              "brand": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              },
+              "genderCode": {
+                "type": "string"
+              },
+              "colorCode": {
+                "type": "string"
+              },
+              "materialCode": {
+                "type": "string"
+              },
+              "size": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Orders.Created": {
+      "type": "object",
+      "properties": {
+        "orderNr": {
+          "type": "string"
+        },
+        "isEditable": {
+          "type": "boolean"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "rejectPrice": {
+          "type": "integer"
+        },
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "paymentMethod": {
+          "type": "string"
+        },
+        "deliveryPrice": {
+          "type": "number"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "paymentDate": {
+          "type": "string"
+        },
+        "itemQuantity": {
+          "type": "integer"
+        }
+      }
+    },
+    "Order.Customer": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "middleName": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "isEditable": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Shipments.Fulfilment": {
+      "type": "object",
+      "description": "object (Fulfiment shipments)",
+      "required": [
+        "date",
+        "id"
+      ],
+      "properties": {
+        "date": {
+          "type": "string",
+          "description": "string"
+        },
+        "id": {
+          "type": "string",
+          "description": "string"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "price",
+              "quantity",
+              "sku"
+            ],
+            "properties": {
+              "price": {
+                "type": "string"
+              },
+              "quantity": {
+                "type": "string"
+              },
+              "sku": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "pallets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "barcode"
+            ],
+            "properties": {
+              "barcode": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Shipments": {
+      "type": "object",
+      "properties": {
+        "itemsQuantity": {
+          "type": "string"
+        },
+        "palletsQuantity": {
+          "type": "string"
+        },
+        "packsQuantity": {
+          "type": "string"
+        },
+        "direction": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "shipmentId": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "destination": {
+          "type": "string"
+        },
+        "shippedAt": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

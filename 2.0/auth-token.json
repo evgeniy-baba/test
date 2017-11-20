@@ -1,0 +1,123 @@
+{
+  "host": "raw.githubusercontent.com",
+  "basePath": "/api",
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "title": "raw.githubusercontent.com",
+    "version": "0.1"
+  },
+  "paths": {
+    "/auth/token": {
+      "get": {
+        "produces": [],
+        "consumes": [],
+        "operationId": "get_auth-token",
+        "summary": "Gets an auth token",
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "client_id",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "client_secret",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "grant_type",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "password",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "redirect_uri",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/[]"
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Is not authorized"
+          }
+        }
+      },
+      "post": {
+        "produces": [],
+        "consumes": [],
+        "operationId": "post_auth-token",
+        "summary": "Gets an auth token",
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "client_id",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "client_secret",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "grant_type",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "password",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "redirect_uri",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/[]"
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Is not authorized"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "[]": {}
+  }
+}

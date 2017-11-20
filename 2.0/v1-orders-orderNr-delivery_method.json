@@ -1,0 +1,139 @@
+{
+  "host": "raw.githubusercontent.com",
+  "basePath": "/api",
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "title": "raw.githubusercontent.com",
+    "version": "0.1"
+  },
+  "paths": {
+    "/v1/orders/{orderNr}/delivery_method": {
+      "get": {
+        "produces": [],
+        "consumes": [],
+        "operationId": "get_v1-orders-delivery-method",
+        "summary": "Get delivery method for Order",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderNr",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SC.OrderBundle.Model.DeliveryMethod"
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "404": {
+            "description": "Order is not found"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "produces": [],
+        "consumes": [],
+        "operationId": "post_v1-orders-delivery-method",
+        "summary": "Set delivery method to order",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderNr",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "delivery_method",
+            "type": "SC.ApiBundle.Form.Order.DeliveryMethodType"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          },
+          "202": {
+            "description": "Accepted"
+          },
+          "400": {
+            "description": "Form has errors; Can't set delivery method because address is not validated yet; Validation Failed"
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "423": {
+            "description": "Server can't process the request just now"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SC.ApiBundle.Form.Order.DeliveryMethodType": {
+      "description": "object (DeliveryMethodType)",
+      "required": [
+        "deliveryDate",
+        "deliveryIntervalId",
+        "deliveryIntervalFrom",
+        "deliveryIntervalTo",
+        "shippingMethodCode",
+        "shippingMethodName",
+        "flatInterval"
+      ],
+      "properties": {
+        "comment": {
+          "type": "string",
+          "description": "Comment"
+        },
+        "deliveryDate": {
+          "type": "string",
+          "format": "date",
+          "description": "date"
+        },
+        "deliveryIntervalFrom": {
+          "type": "string",
+          "description": "string"
+        },
+        "deliveryIntervalId": {
+          "type": "string",
+          "description": "string"
+        },
+        "deliveryIntervalTo": {
+          "type": "string",
+          "description": "string"
+        },
+        "flatInterval": {
+          "type": "string",
+          "description": "string"
+        },
+        "shippingMethodCode": {
+          "type": "string",
+          "description": "string"
+        },
+        "shippingMethodName": {
+          "type": "string",
+          "description": "string"
+        }
+      }
+    },
+    "SC.OrderBundle.Model.DeliveryMethod": {}
+  }
+}

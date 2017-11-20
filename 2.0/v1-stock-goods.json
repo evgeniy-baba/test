@@ -1,0 +1,73 @@
+{
+  "host": "raw.githubusercontent.com",
+  "basePath": "/api",
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "title": "raw.githubusercontent.com",
+    "version": "0.1"
+  },
+  "paths": {
+    "/v1/stock/goods": {
+      "get": {
+        "produces": [],
+        "consumes": [],
+        "operationId": "get_v1-stock-goods",
+        "summary": "Get stock collection",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "What page to return.",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Include stock state entries with zero quantity",
+            "name": "withZeroQuantity",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Partner code",
+            "name": "partnerCode",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Array of skus",
+            "name": "sku",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/[.sku.sku1.quantity.5.sku.sku2.quantity.1.sku.sku3.quantity.3.]"
+            }
+          },
+          "401": {
+            "description": "Partner is not authorized"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "[.sku.sku1.quantity.5.sku.sku2.quantity.1.sku.sku3.quantity.3.]": {}
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "host": "raw.githubusercontent.com",
+  "basePath": "/api",
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "title": "raw.githubusercontent.com",
+    "version": "0.1"
+  },
+  "paths": {
+    "/v1/reports/label/stream": {
+      "get": {
+        "produces": [],
+        "consumes": [],
+        "operationId": "get_v1-reports-label-stream",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "orderNr",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "packBarcode",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "paymentMethod",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "multiPacks",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

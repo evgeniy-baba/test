@@ -1,0 +1,189 @@
+{
+  "host": "raw.githubusercontent.com",
+  "basePath": "/api",
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "title": "raw.githubusercontent.com",
+    "version": "0.1"
+  },
+  "paths": {
+    "/v1/orders/{orderNr}/shipping_address": {
+      "get": {
+        "produces": [],
+        "consumes": [],
+        "operationId": "get_v1-orders-shipping-address",
+        "summary": "Get Order shipping address",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderNr",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SC.OrderBundle.Entity.OrderAddress"
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "404": {
+            "description": "Page is not found"
+          },
+          "423": {
+            "description": "Can't validate address while previous wasn't set"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "produces": [],
+        "consumes": [],
+        "operationId": "post_v1-orders-shipping-address",
+        "summary": "Saves and validates order address",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderNr",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "address_edit",
+            "type": "SC.ApiBundle.Form.Order.AddressEditType"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          },
+          "202": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Incorrect address, it can't be validated; Form has errors"
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "423": {
+            "description": "System can't accept new address just now"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SC.ApiBundle.Form.Order.AddressEditType": {
+      "description": "object (AddressEditType)",
+      "required": [
+        "zipcode",
+        "city",
+        "street",
+        "houseNum",
+        "cityId",
+        "streetId"
+      ],
+      "properties": {
+        "apartment": {
+          "type": "string",
+          "description": "string"
+        },
+        "buildingId": {
+          "type": "string",
+          "description": "string"
+        },
+        "city": {
+          "type": "string",
+          "description": "string"
+        },
+        "cityId": {
+          "type": "string",
+          "description": "string"
+        },
+        "houseNum": {
+          "type": "string",
+          "description": "string"
+        },
+        "street": {
+          "type": "string",
+          "description": "string"
+        },
+        "streetId": {
+          "type": "string",
+          "description": "string"
+        },
+        "zipcode": {
+          "type": "string",
+          "description": "string"
+        }
+      }
+    },
+    "SC.OrderBundle.Entity.OrderAddress": {
+      "properties": {
+        "apartment": {
+          "type": "string",
+          "description": "string"
+        },
+        "buildingId": {
+          "type": "string",
+          "description": "string"
+        },
+        "city": {
+          "type": "string",
+          "description": "string"
+        },
+        "cityId": {
+          "type": "string",
+          "description": "string"
+        },
+        "houseNum": {
+          "type": "string",
+          "description": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "integer"
+        },
+        "isEditable": {
+          "type": "boolean",
+          "description": "boolean"
+        },
+        "isValid": {
+          "type": "boolean",
+          "description": "boolean"
+        },
+        "region": {
+          "type": "string",
+          "description": "string"
+        },
+        "street": {
+          "type": "string",
+          "description": "string"
+        },
+        "streetId": {
+          "type": "string",
+          "description": "string"
+        },
+        "zipcode": {
+          "type": "string",
+          "description": "string"
+        }
+      }
+    }
+  }
+}

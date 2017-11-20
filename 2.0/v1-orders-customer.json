@@ -1,0 +1,117 @@
+{
+  "host": "raw.githubusercontent.com",
+  "basePath": "/api",
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "title": "raw.githubusercontent.com",
+    "version": "0.1"
+  },
+  "paths": {
+    "/v1/orders/{orderNr}/customer": {
+      "get": {
+        "produces": [],
+        "consumes": [],
+        "operationId": "get_v1-orders-customer",
+        "summary": "ALPHA. (Method can and will be changed. Do not use it). Get customer for Order",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderNr",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SC.OrderBundle.Model.Customer"
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "produces": [],
+        "consumes": [],
+        "operationId": "post_v1-orders-customer",
+        "summary": "Create Customer",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderNr",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "customer_info_edit",
+            "type": "SC.ApiBundle.Form.Order.CustomerInfoEditType"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          },
+          "202": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Invalid submitted data"
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SC.ApiBundle.Form.Order.CustomerInfoEditType": {
+      "description": "object (CustomerInfoEditType)",
+      "required": [
+        "firstName",
+        "lastName",
+        "phone",
+        "email"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Email"
+        },
+        "firstName": {
+          "type": "string",
+          "description": "First name"
+        },
+        "lastName": {
+          "type": "string",
+          "description": "Last name"
+        },
+        "middleName": {
+          "type": "string",
+          "description": "Middle name"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Phone"
+        }
+      }
+    },
+    "SC.OrderBundle.Model.Customer": {}
+  }
+}

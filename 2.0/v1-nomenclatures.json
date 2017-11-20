@@ -1,0 +1,220 @@
+{
+  "host": "raw.githubusercontent.com",
+  "basePath": "/api",
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "title": "raw.githubusercontent.com",
+    "version": "0.1"
+  },
+  "paths": {
+    "/v1/nomenclatures": {
+      "get": {
+        "produces": [],
+        "consumes": [],
+        "operationId": "get_v1-nomenclatures",
+        "summary": "Get all nomenclatures",
+        "parameters": [
+          {
+            "in": "query",
+            "description": "How many nomanclatures to return.",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "What page to return.",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Filter",
+            "name": "filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Sorting",
+            "name": "sort",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "produces": [],
+        "consumes": [],
+        "operationId": "post_v1-nomenclatures",
+        "summary": "Creates a new nomenclature",
+        "responses": {
+          "200": {
+            "description": "No response was specified"
+          },
+          "201": {
+            "description": "Nomenclature is created"
+          },
+          "400": {
+            "description": "Form has errors"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/nomenclatures/{sku}": {
+      "get": {
+        "produces": [],
+        "consumes": [],
+        "operationId": "get_v1-nomenclatures",
+        "summary": "Get nomenclature by sku",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "sku",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AppBundle.Module.Fulfilment.Entity.Nomenclature"
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "404": {
+            "description": "Nomenclature is not found"
+          },
+          "405": {
+            "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "AppBundle.Module.Fulfilment.Entity.Nomenclature": {
+      "properties": {
+        "Nomenclature": {
+          "description": "object"
+        },
+        "barcode": {
+          "type": "string",
+          "description": "string"
+        },
+        "brand": {
+          "type": "string",
+          "description": "string"
+        },
+        "category": {
+          "type": "string",
+          "description": "string"
+        },
+        "color": {
+          "type": "string",
+          "description": "string"
+        },
+        "country_of_origin": {
+          "type": "string",
+          "description": "string"
+        },
+        "gender": {
+          "type": "string",
+          "description": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "integer"
+        },
+        "is_print_eac": {
+          "type": "boolean",
+          "description": "boolean"
+        },
+        "materials": {
+          "type": "string",
+          "description": "string"
+        },
+        "name": {
+          "type": "string",
+          "description": "string"
+        },
+        "parent_sku": {
+          "type": "string",
+          "description": "string"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32",
+          "description": "integer"
+        },
+        "size": {
+          "type": "string",
+          "description": "string"
+        },
+        "size_scale": {
+          "type": "string",
+          "description": "string"
+        },
+        "sku": {
+          "type": "string",
+          "description": "string"
+        },
+        "sub_category": {
+          "type": "string",
+          "description": "string"
+        },
+        "supplier_category": {
+          "type": "string",
+          "description": "string"
+        },
+        "supplier_color": {
+          "type": "string",
+          "description": "string"
+        },
+        "supplier_parent_sku": {
+          "type": "string",
+          "description": "string"
+        },
+        "supplier_size": {
+          "type": "string",
+          "description": "string"
+        },
+        "supplier_sku": {
+          "type": "string",
+          "description": "string"
+        },
+        "urls": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "array"
+        }
+      }
+    }
+  }
+}

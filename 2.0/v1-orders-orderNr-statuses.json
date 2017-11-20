@@ -1,0 +1,91 @@
+{
+  "host": "raw.githubusercontent.com",
+  "basePath": "/api",
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "title": "raw.githubusercontent.com",
+    "version": "0.1"
+  },
+  "paths": {
+    "/v1/orders/{orderNr}/statuses": {
+      "get": {
+        "produces": [],
+        "consumes": [],
+        "operationId": "get_v1-orders-statuses",
+        "summary": "Get order status collection by orderNr",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderNr",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "How many items to return.",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "What page to return.",
+            "name": "page",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SC.OrderBundle.Entity.OrderStatusLog"
+            }
+          },
+          "401": {
+            "description": "Is not authorized"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SC.OrderBundle.Entity.OrderStatusLog": {
+      "properties": {
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "DateTime"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "integer"
+        },
+        "location": {
+          "type": "string",
+          "description": "string"
+        },
+        "reasonId": {
+          "type": "string",
+          "description": "string"
+        },
+        "reasonName": {
+          "type": "string",
+          "description": "string"
+        },
+        "statusName": {
+          "type": "string",
+          "description": "string"
+        }
+      }
+    }
+  }
+}
