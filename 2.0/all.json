@@ -1,17 +1,29 @@
 {
   "host": "api-demo-b2b.lamoda.ru",
-  "basePath": "/api",
   "info": {
-    "title": "B2B Lamoda API body",
+    "title": "B2B Lamoda API",
     "version": "0.1"
   },
   "schemes": [
     "https"
   ],
   "swagger": "2.0",
+  "security": [
+    {
+      "APIKeyHeader": []
+    }
+  ],
+  "securityDefinitions": {
+    "APIKeyHeader": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization"
+    }
+  },
   "paths": {
     "/auth/token": {
       "get": {
+        "security": [],
         "tags": [
           "auth"
         ],
@@ -71,7 +83,7 @@
         }
       }
     },
-    "/v1/addresses/city": {
+    "/api/v1/addresses/city": {
       "get": {
         "tags": [
           "addresses"
@@ -140,7 +152,7 @@
         }
       }
     },
-    "/v1/addresses/street": {
+    "/api/v1/addresses/street": {
       "get": {
         "tags": [
           "addresses"
@@ -213,7 +225,7 @@
         }
       }
     },
-    "/v1/addresses/building": {
+    "/api/v1/addresses/building": {
       "get": {
         "tags": [
           "addresses"
@@ -297,7 +309,7 @@
         }
       }
     },
-    "/v1/delivery_methods": {
+    "/api/v1/delivery_methods": {
       "get": {
         "tags": [
           "delivery_methods"
@@ -391,7 +403,7 @@
         }
       }
     },
-    "/v1/goods": {
+    "/api/v1/goods": {
       "get": {
         "tags": [
           "goods"
@@ -469,7 +481,7 @@
         }
       }
     },
-    "/v1/goods/{goodsId}": {
+    "/api/v1/goods/{goodsId}": {
       "get": {
         "tags": [
           "goods"
@@ -529,7 +541,7 @@
         }
       }
     },
-    "/v1/nomenclatures": {
+    "/api/v1/nomenclatures": {
       "get": {
         "tags": [
           "nomenclatures"
@@ -646,7 +658,7 @@
         }
       }
     },
-    "/v1/nomenclatures/{sku}": {
+    "/api/v1/nomenclatures/{sku}": {
       "get": {
         "tags": [
           "nomenclatures"
@@ -689,7 +701,7 @@
         }
       }
     },
-    "/v1/orders": {
+    "/api/v1/orders": {
       "get": {
         "tags": [
           "orders"
@@ -792,7 +804,7 @@
         }
       }
     },
-    "/v1/orders/{orderNr}": {
+    "/api/v1/orders/{orderNr}": {
       "get": {
         "tags": [
           "orders"
@@ -876,7 +888,7 @@
         }
       }
     },
-    "/v1/orders/{orderNr}/customer": {
+    "/api/v1/orders/{orderNr}/customer": {
       "get": {
         "tags": [
           "orders"
@@ -964,7 +976,7 @@
         }
       }
     },
-    "/v1/orders/{orderNr}/delivery_method": {
+    "/api/v1/orders/{orderNr}/delivery_method": {
       "get": {
         "tags": [
           "orders"
@@ -1058,7 +1070,7 @@
         }
       }
     },
-    "/v1/orders/{orderNr}/events": {
+    "/api/v1/orders/{orderNr}/events": {
       "post": {
         "tags": [
           "orders"
@@ -1105,7 +1117,7 @@
         }
       }
     },
-    "/v1/orders/{orderNr}/events/{eventId}": {
+    "/api/v1/orders/{orderNr}/events/{eventId}": {
       "get": {
         "tags": [
           "orders"
@@ -1151,7 +1163,7 @@
         }
       }
     },
-    "/v1/orders/{orderNr}/shipping_address": {
+    "/api/v1/orders/{orderNr}/shipping_address": {
       "get": {
         "tags": [
           "orders"
@@ -1245,7 +1257,7 @@
         }
       }
     },
-    "/v1/orders/{orderNr}/statuses": {
+    "/api/v1/orders/{orderNr}/statuses": {
       "get": {
         "tags": [
           "orders"
@@ -1297,7 +1309,7 @@
         }
       }
     },
-    "/v1/ordersTracking/{trackingId}": {
+    "/api/v1/ordersTracking/{trackingId}": {
       "get": {
         "tags": [
           "tracking"
@@ -1340,7 +1352,7 @@
         }
       }
     },
-    "/v1/packsTracking/{packBarcode}": {
+    "/api/v1/packsTracking/{packBarcode}": {
       "get": {
         "tags": [
           "tracking"
@@ -1383,7 +1395,7 @@
         }
       }
     },
-    "/v1/shipments": {
+    "/api/v1/shipments": {
       "get": {
         "tags": [
           "shipments"
@@ -1463,7 +1475,7 @@
         }
       }
     },
-    "/v1/shipments/{shipmentId}": {
+    "/api/v1/shipments/{shipmentId}": {
       "get": {
         "tags": [
           "shipments"
@@ -1503,7 +1515,7 @@
         }
       }
     },
-    "/v1/shipments/fulfilment": {
+    "/api/v1/shipments/fulfilment": {
       "get": {
         "tags": [
           "shipments"
@@ -1641,7 +1653,7 @@
         }
       }
     },
-    "/v1/shipments/fulfilment/{id}": {
+    "/api/v1/shipments/fulfilment/{id}": {
       "get": {
         "tags": [
           "shipments"
@@ -1684,7 +1696,7 @@
         }
       }
     },
-    "/v1/shipments/out": {
+    "/api/v1/shipments/out": {
       "post": {
         "tags": [
           "shipments"
@@ -1728,7 +1740,7 @@
         }
       }
     },
-    "/v1/stock/goods": {
+    "/api/v1/stock/goods": {
       "get": {
         "tags": [
           "goods"
