@@ -2,7 +2,7 @@
   "host": "api-demo-b2b.lamoda.ru",
   "info": {
     "title": "B2B Lamoda API",
-    "version": "0.1"
+    "version": "1.0"
   },
   "schemes": [
     "https"
@@ -102,6 +102,7 @@
             "description": "City name",
             "name": "name",
             "type": "string",
+            "example": "Москва",
             "required": true
           }
         ],
@@ -2080,35 +2081,52 @@
       "properties": {
         "apartment": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "5",
+          "maxLength": 255
         },
         "buildingId": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "770000000003171000024",
+          "maxLength": 64
         },
         "city": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "Москва",
+          "maxLength": 255
         },
         "cityId": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "7700000000000",
+          "maxLength": 64
         },
         "houseNum": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "д.27 к1",
+          "maxLength": 255
         },
         "street": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "ул Щепкина",
+          "maxLength": 255
         },
         "streetId": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "77000000000317100",
+          "maxLength": 64
         },
         "zipcode": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "129090",
+          "minLength": 5,
+          "maxLength": 6
         }
       }
     },
@@ -2123,23 +2141,28 @@
       "properties": {
         "email": {
           "type": "string",
-          "description": "Email"
+          "description": "Email",
+          "example": "kva@mail.kva"
         },
         "firstName": {
           "type": "string",
-          "description": "First name"
+          "description": "First name",
+          "example": "Иван"
         },
         "lastName": {
           "type": "string",
-          "description": "Last name"
+          "description": "Last name",
+          "example": "Иванович"
         },
         "middleName": {
           "type": "string",
-          "description": "Middle name"
+          "description": "Middle name",
+          "example": "Иванов"
         },
         "phone": {
           "type": "string",
-          "description": "Phone"
+          "description": "Phone",
+          "example": 76665554444
         }
       }
     },
@@ -2151,42 +2174,46 @@
         "deliveryIntervalFrom",
         "deliveryIntervalTo",
         "shippingMethodCode",
-        "shippingMethodName",
-        "flatInterval"
+        "shippingMethodName"
       ],
       "properties": {
         "comment": {
           "type": "string",
-          "description": "Comment"
+          "description": "Comment",
+          "example": "Call me before"
         },
         "deliveryDate": {
           "type": "string",
           "format": "date",
-          "description": "date"
+          "description": "date",
+          "example": "2015-08-29"
         },
         "deliveryIntervalFrom": {
           "type": "string",
-          "description": "string"
-        },
-        "deliveryIntervalId": {
-          "type": "string",
-          "description": "string"
+          "format": "time",
+          "description": "time",
+          "example": "10:00:00"
         },
         "deliveryIntervalTo": {
           "type": "string",
-          "description": "string"
+          "format": "time",
+          "description": "time",
+          "example": "18:00:00"
         },
-        "flatInterval": {
+        "deliveryIntervalId": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "237049"
         },
         "shippingMethodCode": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "lamoda-99"
         },
         "shippingMethodName": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "lamoda delivery method name"
         }
       }
     },
@@ -2221,17 +2248,19 @@
     "Order.EventType": {
       "description": "object (OrderEventType)",
       "required": [
-        "type",
-        "data"
+        "type"
       ],
       "properties": {
         "data": {
           "type": "string",
-          "description": "Data for the event"
+          "format": "date-time",
+          "description": "Data for the event",
+          "example": "2015-05-07 18:44:15"
         },
         "type": {
           "type": "string",
-          "description": "Event types (confirm, cancel)"
+          "description": "Event types (confirm, cancel)",
+          "example": "confirm"
         }
       }
     },
@@ -2508,33 +2537,51 @@
         "orderNr"
       ],
       "properties": {
-        "height": {
-          "type": "string",
-          "description": "string"
-        },
-        "length": {
-          "type": "string",
-          "description": "string"
-        },
         "orderNr": {
           "type": "string",
-          "description": "Order number"
+          "description": "Order number",
+          "example": "140101-123456",
+          "maxLength": 18
         },
         "sku": {
           "type": "string",
-          "description": "Item SKU"
+          "description": "Item SKU",
+          "example": "SKU000001",
+          "maxLength": 18
         },
         "unitload": {
           "type": "string",
-          "description": "Unique unitload"
+          "description": "Unique unitload",
+          "example": "10345765435741",
+          "maxLength": 26
+        },
+        "height": {
+          "type": "number",
+          "format": "float",
+          "description": "float",
+          "example": 3.4,
+          "maximum": 10
+        },
+        "length": {
+          "type": "number",
+          "format": "float",
+          "description": "float",
+          "example": 1.4,
+          "maximum": 10
         },
         "weight": {
-          "type": "string",
-          "description": "string"
+          "type": "number",
+          "format": "float",
+          "description": "float",
+          "example": 5.7,
+          "maximum": 10
         },
         "width": {
-          "type": "string",
-          "description": "string"
+          "type": "number",
+          "format": "float",
+          "description": "float",
+          "example": 2.4,
+          "maximum": 10
         }
       }
     },
@@ -2548,11 +2595,42 @@
       "properties": {
         "barcode": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "PACKGG111870011",
+          "maxLength": 16
+        },
+        "type": {
+          "type": "string",
+          "description": "string",
+          "example": "pack"
         },
         "height": {
-          "type": "string",
-          "description": "string"
+          "type": "number",
+          "format": "float",
+          "description": "float",
+          "example": 3.4,
+          "maximum": 10
+        },
+        "length": {
+          "type": "number",
+          "format": "float",
+          "description": "float",
+          "example": 1.4,
+          "maximum": 10
+        },
+        "weight": {
+          "type": "number",
+          "format": "float",
+          "description": "float",
+          "example": 5.7,
+          "maximum": 10
+        },
+        "width": {
+          "type": "number",
+          "format": "float",
+          "description": "float",
+          "example": 2.4,
+          "maximum": 10
         },
         "items": {
           "type": "array",
@@ -2560,26 +2638,6 @@
             "$ref": "#/definitions/SC.ApiBundle.Form.Shipment.Out.ItemType"
           },
           "description": "array of objects (ItemType)"
-        },
-        "length": {
-          "type": "string",
-          "description": "string"
-        },
-        "partner": {
-          "type": "string",
-          "description": "string"
-        },
-        "type": {
-          "type": "string",
-          "description": "string"
-        },
-        "weight": {
-          "type": "string",
-          "description": "string"
-        },
-        "width": {
-          "type": "string",
-          "description": "string"
         }
       }
     },
@@ -2593,7 +2651,14 @@
       "properties": {
         "barcode": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "PALGG111870011",
+          "maxLength": 16
+        },
+        "type": {
+          "type": "string",
+          "description": "string",
+          "example": "pallet"
         },
         "containers": {
           "type": "array",
@@ -2601,14 +2666,6 @@
             "$ref": "#/definitions/SC.ApiBundle.Form.Shipment.Out.PackType"
           },
           "description": "array of objects (PackType)"
-        },
-        "partner": {
-          "type": "string",
-          "description": "string"
-        },
-        "type": {
-          "type": "string",
-          "description": "string"
         }
       }
     },
@@ -2620,41 +2677,44 @@
         "source",
         "destination",
         "shippedAt",
-        "containers",
-        "partner"
+        "containers"
       ],
       "properties": {
+        "id": {
+          "type": "string",
+          "description": "string",
+          "example": "GG200187026",
+          "maxLength": 20
+        },
+        "type": {
+          "type": "string",
+          "description": "string",
+          "example": "Sale"
+        },
+        "source": {
+          "type": "string",
+          "description": "string",
+          "example": "PWAX",
+          "maxLength": 255
+        },
+        "destination": {
+          "type": "string",
+          "description": "string",
+          "example": "Samara",
+          "maxLength": 255
+        },
+        "shippedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "datetime",
+          "example": "2017-02-17 10:00:00"
+        },
         "containers": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/SC.ApiBundle.Form.Shipment.Out.PalletType"
           },
           "description": "array of objects (PalletType)"
-        },
-        "destination": {
-          "type": "string",
-          "description": "string"
-        },
-        "id": {
-          "type": "string",
-          "description": "string"
-        },
-        "partner": {
-          "type": "string",
-          "description": "string"
-        },
-        "shippedAt": {
-          "type": "string",
-          "format": "date-time",
-          "description": "datetime"
-        },
-        "source": {
-          "type": "string",
-          "description": "string"
-        },
-        "type": {
-          "type": "string",
-          "description": "string"
         }
       }
     },
@@ -2882,39 +2942,56 @@
       "properties": {
         "sku": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "SELLERSK68",
+          "maxLength": 50
         },
         "parentSku": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "TEST8",
+          "maxLength": 255
         },
         "barcode": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "SELLERSK68",
+          "maxLength": 80
         },
         "name": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "водолазка",
+          "maxLength": 110
         },
         "size": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "S",
+          "maxLength": 30
         },
         "color": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "белый",
+          "maxLength": 50
         },
         "brand": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "Водолазкины",
+          "maxLength": 50
         },
         "category": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "трикотаж",
+          "maxLength": 255
         },
         "isPrintEAC": {
-          "type": "string",
-          "description": "string"
+          "type": "boolean",
+          "description": "boolean",
+          "example": true
         },
         "imageUrls": {
           "type": "array",
@@ -2922,13 +2999,16 @@
             "type": "object",
             "properties": {
               "url": {
-                "type": "string"
+                "type": "string",
+                "example": "https://lamoda.ru"
               },
               "order": {
-                "type": "integer"
+                "type": "integer",
+                "example": 1
               },
               "type": {
-                "type": "string"
+                "type": "string",
+                "example": "main"
               }
             }
           }
@@ -2946,31 +3026,43 @@
       "properties": {
         "orderNr": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "117391871",
+          "maxLength": 18
         },
         "deliveryDate": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "format": "date",
+          "example": "2015-08-29"
         },
         "deliveryIntervalFrom": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "format": "time",
+          "example": "10:00:00"
         },
         "deliveryIntervalTo": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "format": "time",
+          "example": "18:00:00"
         },
         "paymentMethod": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "COD"
         },
         "shippingType": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": null
         },
         "comment": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "Call me before",
+          "maxLength": 255
         },
         "customerInfo": {
           "type": "object",
@@ -2982,19 +3074,24 @@
           ],
           "properties": {
             "firstName": {
-              "type": "string"
+              "type": "string",
+              "example": "Иван"
             },
             "lastName": {
-              "type": "string"
+              "type": "string",
+              "example": "Иванович"
             },
             "middleName": {
-              "type": "string"
+              "type": "string",
+              "example": "Иванов"
             },
             "phone": {
-              "type": "string"
+              "type": "string",
+              "example": "76665554444"
             },
             "email": {
-              "type": "string"
+              "type": "string",
+              "example": "kva@mail.kva"
             }
           }
         },
@@ -3010,42 +3107,64 @@
             ],
             "properties": {
               "sku": {
-                "type": "string"
+                "type": "string",
+                "example": "0599250740036"
               },
               "description": {
-                "type": "string"
+                "type": "string",
+                "example": "Ice berg"
               },
               "cogsPrice": {
-                "type": "number"
+                "type": "number",
+                "format": "float",
+                "description": "float",
+                "example": 12000
               },
               "paidPrice": {
                 "type": "number",
                 "format": "float",
-                "description": "float"
+                "description": "float",
+                "example": 12000
               },
               "price": {
-                "type": "number"
+                "type": "number",
+                "format": "float",
+                "description": "float",
+                "example": 12000
               },
               "totalDiscount": {
-                "type": "string"
+                "type": "number",
+                "format": "float",
+                "description": "float",
+                "example": 0
               },
               "brand": {
-                "type": "string"
+                "type": "string",
+                "example": "Водолазкины"
               },
               "category": {
-                "type": "string"
+                "type": "string",
+                "example": "CLOTHES"
               },
               "genderCode": {
-                "type": "string"
+                "type": "string",
+                "example": "M"
               },
               "colorCode": {
-                "type": "string"
+                "type": "string",
+                "example": "red"
               },
               "materialCode": {
-                "type": "string"
+                "type": "string",
+                "example": "ice"
               },
               "size": {
-                "type": "string"
+                "type": "string",
+                "example": "L"
+              },
+              "sizeScale": {
+                "type": "string",
+                "example": "rus"
               }
             }
           }
@@ -3126,11 +3245,15 @@
       "properties": {
         "date": {
           "type": "string",
-          "description": "string"
+          "format": "date",
+          "description": "string",
+          "example": "10.09.2017"
         },
         "id": {
           "type": "string",
-          "description": "string"
+          "description": "string",
+          "example": "187-000-157",
+          "maxLength": 20
         },
         "items": {
           "type": "array",
@@ -3143,13 +3266,17 @@
             ],
             "properties": {
               "price": {
-                "type": "string"
+                "type": "string",
+                "example": "100"
               },
               "quantity": {
-                "type": "string"
+                "type": "string",
+                "example": "1"
               },
               "sku": {
-                "type": "string"
+                "type": "string",
+                "example": "SELLERSK157",
+                "maxLength": 50
               }
             }
           }
@@ -3163,7 +3290,8 @@
             ],
             "properties": {
               "barcode": {
-                "type": "string"
+                "type": "string",
+                "example": "GG23164221157"
               }
             }
           }
