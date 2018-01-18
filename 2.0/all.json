@@ -95,7 +95,7 @@
           "application/json"
         ],
         "operationId": "get_v1-addresses-city",
-        "summary": "Gets an Addresses for a given name and parentId",
+        "summary": "Get cityId suggestions by the city name",
         "parameters": [
           {
             "in": "query",
@@ -164,7 +164,7 @@
           "application/json"
         ],
         "operationId": "get_v1-addresses-street",
-        "summary": "Gets an Addresses for a given name and parentId",
+        "summary": "Gets streetId suggestions by the street name and parentId",
         "parameters": [
           {
             "in": "query",
@@ -237,7 +237,7 @@
           "application/json"
         ],
         "operationId": "get_v1-addresses-building",
-        "summary": "Gets an Addresses for a given name and parentId",
+        "summary": "Get buildingId suggestions by the builing number and parentId",
         "parameters": [
           {
             "in": "query",
@@ -321,7 +321,7 @@
           "application/json"
         ],
         "operationId": "get_v1-delivery-methods",
-        "summary": "Get available delivery methods for order or by delivery params",
+        "summary": "Get available delivery methods by order Id or by address Id",
         "parameters": [
           {
             "in": "query",
@@ -333,12 +333,6 @@
             "in": "query",
             "description": "Address object id",
             "name": "address_object_id",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "description": "Partner code",
-            "name": "partner_code",
             "type": "string"
           },
           {
@@ -361,7 +355,7 @@
           },
           {
             "in": "query",
-            "description": "Total cost for purchase",
+            "description": "Total order cost",
             "name": "cart_amount",
             "type": "string"
           },
@@ -415,17 +409,17 @@
           "application/json"
         ],
         "operationId": "get_v1-goods",
-        "summary": "Get goods collection",
+        "summary": "Get stock",
         "parameters": [
           {
             "in": "query",
-            "description": "How many goods to return.",
+            "description": "Number of sku to return.",
             "name": "limit",
             "type": "string"
           },
           {
             "in": "query",
-            "description": "What page to return.",
+            "description": "Number of page to return.",
             "name": "page",
             "type": "string"
           },
@@ -493,7 +487,7 @@
           "application/json"
         ],
         "operationId": "get_v1-goods-goodsId",
-        "summary": "Gets a Goods for a given id",
+        "summary": "Get stock by sku",
         "parameters": [
           {
             "in": "path",
@@ -629,7 +623,7 @@
           "application/json"
         ],
         "operationId": "post_v1-nomenclatures",
-        "summary": "Creates a new nomenclature",
+        "summary": "Create a new nomenclature",
         "parameters": [
           {
             "in": "body",
@@ -670,7 +664,7 @@
           "application/json"
         ],
         "operationId": "get_v1-nomenclatures-sku",
-        "summary": "Get nomenclature by sku",
+        "summary": "Get stock by sku",
         "parameters": [
           {
             "in": "path",
@@ -766,7 +760,7 @@
           "application/json"
         ],
         "operationId": "post_v1-orders",
-        "summary": "Creates a new order from submitted data.",
+        "summary": "Create a new order",
         "parameters": [
           {
             "in": "body",
@@ -816,7 +810,7 @@
           "application/json"
         ],
         "operationId": "get_v1-orders-orderNr",
-        "summary": "Gets a Order for a given id",
+        "summary": "Get Order by Id",
         "parameters": [
           {
             "in": "path",
@@ -857,7 +851,7 @@
           "application/json"
         ],
         "operationId": "put_v1-orders",
-        "summary": "Update an Order from submitted data.",
+        "summary": "Edit order data.",
         "parameters": [
           {
             "in": "path",
@@ -938,7 +932,7 @@
           "application/json"
         ],
         "operationId": "post_v1-orders-customer",
-        "summary": "Create Customer",
+        "summary": "Edit customer data",
         "parameters": [
           {
             "in": "path",
@@ -988,7 +982,7 @@
           "application/json"
         ],
         "operationId": "get_v1-orders-delivery-method",
-        "summary": "Get delivery method for Order",
+        "summary": "Get delivery method for order",
         "parameters": [
           {
             "in": "path",
@@ -1029,7 +1023,7 @@
           "application/json"
         ],
         "operationId": "post_v1-orders-delivery-method",
-        "summary": "Set delivery method to order",
+        "summary": "Set delivery method for order",
         "parameters": [
           {
             "in": "path",
@@ -1082,7 +1076,7 @@
           "application/json"
         ],
         "operationId": "post_v1-orders-events",
-        "summary": "Posts order event",
+        "summary": "Confirm or cancel order",
         "parameters": [
           {
             "in": "path",
@@ -1175,7 +1169,7 @@
           "application/json"
         ],
         "operationId": "get_v1-orders-shipping-address",
-        "summary": "Get Order shipping address",
+        "summary": "Get order shipping address",
         "parameters": [
           {
             "in": "path",
@@ -1216,7 +1210,7 @@
           "application/json"
         ],
         "operationId": "post_v1-orders-shipping-address",
-        "summary": "Saves and validates order address",
+        "summary": "Set order address",
         "parameters": [
           {
             "in": "path",
@@ -1269,7 +1263,7 @@
           "application/json"
         ],
         "operationId": "get_v1-orders-statuses",
-        "summary": "Get order status collection by orderNr",
+        "summary": "Get order statuses by orderNr",
         "parameters": [
           {
             "in": "path",
@@ -1407,7 +1401,7 @@
           "application/json"
         ],
         "operationId": "get_v1-shipments",
-        "summary": "List all shipments.",
+        "summary": "Get crossdocking shipments",
         "parameters": [
           {
             "in": "query",
@@ -1487,7 +1481,7 @@
           "application/json"
         ],
         "operationId": "get_v1-shipments-shipmentId",
-        "summary": "ALPHA. (Method can and will be changed. Do not use it). Gets a Shipment for a given id",
+        "summary": "ALPHA. (Method can and will be changed. Do not use it). Get a Shipment by id",
         "parameters": [
           {
             "in": "path",
@@ -1527,7 +1521,7 @@
           "application/json"
         ],
         "operationId": "get_v1-shipments-fulfilment",
-        "summary": "Get fulfilment shipments collection",
+        "summary": "Get fulfilment shipments",
         "parameters": [
           {
             "in": "query",
@@ -1609,7 +1603,7 @@
           "application/json"
         ],
         "operationId": "post_v1-shipments-fulfilment",
-        "summary": "Creates a new fulfilment shipment",
+        "summary": "Create a new fulfilment shipment",
         "parameters": [
           {
             "in": "body",
@@ -1708,7 +1702,7 @@
           "application/json"
         ],
         "operationId": "post_v1-shipments-out",
-        "summary": "Creates a new shipment from the submitted data.",
+        "summary": "Creates a new crossdocking shipment",
         "parameters": [
           {
             "in": "body",
