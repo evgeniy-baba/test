@@ -327,37 +327,42 @@
             "in": "query",
             "description": "Order id",
             "name": "order_id",
-            "type": "string"
+            "type": "string",
+            "pattern": "[A-Z0-9-]{3,20}"
           },
           {
             "in": "query",
             "description": "Address object id",
             "name": "address_object_id",
-            "type": "string"
+            "type": "string",
+            "pattern": "[A-Z0-9]{17,64}"
           },
           {
             "in": "query",
             "description": "Latitude",
             "name": "latitude",
-            "type": "string"
+            "type": "number",
+            "format": "double"
           },
           {
             "in": "query",
             "description": "Longitude",
             "name": "longitude",
-            "type": "string"
+            "type": "number",
+            "format": "double"
           },
           {
             "in": "query",
             "description": "Number of items",
             "name": "item_count",
-            "type": "string"
+            "type": "integer"
           },
           {
             "in": "query",
             "description": "Total order cost",
             "name": "cart_amount",
-            "type": "string"
+            "type": "number",
+            "format": "double"
           },
           {
             "in": "query",
@@ -369,7 +374,7 @@
             "in": "query",
             "description": "Weight of the shipping container",
             "name": "weight",
-            "type": "string"
+            "type": "integer"
           }
         ],
         "responses": {
@@ -390,6 +395,50 @@
           },
           "405": {
             "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/v1/delivery_info": {
+      "get": {
+        "tags": [
+          "delivery_info"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-delivery-info",
+        "summary": "Get delivery info by aoid",
+        "parameters": [
+          {
+            "in": "query",
+            "description": "Address object identifier",
+            "name": "aoid",
+            "type": "string",
+            "pattern": "[A-Z0-9]{13,21}"
+          },
+          {
+            "in": "query",
+            "description": "Partner identifier for admins",
+            "name": "partner_id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "schema": {
+              "$ref": "#/definitions/DeliveryInfo"
+            }
+          },
+          "400": {
+            "description": "Bad request"
           },
           "500": {
             "description": "Internal server error"
@@ -988,7 +1037,8 @@
             "in": "path",
             "name": "orderNr",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "pattern": "^[A-Z0-9-]{3,20}$"
           }
         ],
         "responses": {
@@ -1382,6 +1432,196 @@
           },
           "405": {
             "description": "Method is not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/v1/pickup_points": {
+      "get": {
+        "tags": [
+          "pickup_points"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-pickup-points",
+        "summary": "Get Pickup Points.",
+        "parameters": [
+          {
+            "in": "query",
+            "description": "Address object identifier",
+            "name": "aoid",
+            "type": "string",
+            "pattern": "[A-Z0-9]{13,21}"
+          },
+          {
+            "in": "query",
+            "description": "Country code",
+            "name": "country",
+            "type": "string",
+            "pattern": "[A-Z]{2}",
+            "default": "RU"
+          },
+          {
+            "in": "query",
+            "description": "Latitude",
+            "name": "latitude",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Longitude",
+            "name": "longitude",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Number of items",
+            "name": "item_count",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "description": "Total cost for purchase",
+            "name": "cart_amount",
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "in": "query",
+            "description": "Is bankcard accepted for payment",
+            "name": "is_bankcard_accepted",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Partner identifier for admins",
+            "name": "partner_id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/PickupPoints"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "405": {
+            "description": "Method not allowed"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/v1/pickup_points/{id}": {
+      "get": {
+        "tags": [
+          "pickup_points"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_v1-pickup-points-id",
+        "summary": "Get Pickup Point by Id.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "pattern": "\\d+"
+          },
+          {
+            "in": "query",
+            "description": "Address object identifier",
+            "name": "aoid",
+            "type": "string",
+            "pattern": "[A-Z0-9]{13,21}"
+          },
+          {
+            "in": "query",
+            "description": "Country code",
+            "name": "country",
+            "type": "string",
+            "pattern": "[A-Z]{2}",
+            "default": "RU"
+          },
+          {
+            "in": "query",
+            "description": "Latitude",
+            "name": "latitude",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Longitude",
+            "name": "longitude",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Number of items",
+            "name": "item_count",
+            "type": "integer",
+            "pattern": "\\d+"
+          },
+          {
+            "in": "query",
+            "description": "Total cost for purchase",
+            "name": "cart_amount",
+            "type": "number",
+            "pattern": "\\d+\\.?\\d*",
+            "format": "double"
+          },
+          {
+            "in": "query",
+            "description": "Is bankcard accepted for payment",
+            "name": "is_bankcard_accepted",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "description": "Partner identifier for admins",
+            "name": "partner_id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/PickupPoint"
+            }
+          },
+          "400": {
+            "description": "Pickup point is not found or it is not available"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "405": {
+            "description": "Method not allowed"
           },
           "500": {
             "description": "Internal server error"
@@ -2058,6 +2298,10 @@
         "zipcode": {
           "type": "string",
           "description": "string"
+        },
+        "pickupPointId": {
+          "type": "integer",
+          "description": "pickup point identifier"
         }
       }
     },
@@ -2120,6 +2364,11 @@
           "example": "129090",
           "minLength": 5,
           "maxLength": 6
+        },
+        "pickupPointId": {
+          "type": "integer",
+          "description": "pickup point identifier",
+          "example": 12341234
         }
       }
     },
@@ -2162,12 +2411,7 @@
     "Order.DeliveryMethodType": {
       "description": "object (DeliveryMethodType)",
       "required": [
-        "deliveryDate",
-        "deliveryIntervalId",
-        "deliveryIntervalFrom",
-        "deliveryIntervalTo",
-        "shippingMethodCode",
-        "shippingMethodName"
+        "deliveryIntervalId"
       ],
       "properties": {
         "comment": {
@@ -2178,25 +2422,25 @@
         "deliveryDate": {
           "type": "string",
           "format": "date",
-          "description": "date",
+          "description": "full date",
           "example": "2015-08-29"
         },
         "deliveryIntervalFrom": {
           "type": "string",
-          "format": "time",
-          "description": "time",
-          "example": "10:00:00"
+          "format": "date-time",
+          "description": "partial-time hours from",
+          "example": "23:59:59"
         },
         "deliveryIntervalTo": {
           "type": "string",
-          "format": "time",
-          "description": "time",
-          "example": "18:00:00"
+          "format": "date-time",
+          "description": "partial-time hours to",
+          "example": "24:59:59"
         },
         "deliveryIntervalId": {
-          "type": "string",
-          "description": "string",
-          "example": "237049"
+          "type": "integer",
+          "description": "integer",
+          "example": 237049
         },
         "shippingMethodCode": {
           "type": "string",
@@ -3041,12 +3285,32 @@
           "format": "time",
           "example": "18:00:00"
         },
+        "deliveryIntervalId": {
+          "type": "string",
+          "description": "string"
+        },
+        "deliveryPrice": {
+          "type": "number",
+          "description": "string",
+          "format": "double",
+          "pattern": "^\\d{1,8}(\\.\\d+)?$"
+        },
         "paymentMethod": {
           "type": "string",
           "description": "string",
           "example": "COD"
         },
         "shippingType": {
+          "type": "string",
+          "description": "string",
+          "example": "crossdocking"
+        },
+        "source": {
+          "type": "string",
+          "description": "string",
+          "example": "lamoda.ru"
+        },
+        "shippingMethodCode": {
           "type": "string",
           "description": "string",
           "example": null
@@ -3085,6 +3349,53 @@
             "email": {
               "type": "string",
               "example": "kva@mail.kva"
+            },
+            "address": {
+              "type": "object",
+              "required": [
+                "zipcode",
+                "city",
+                "street",
+                "apartment",
+                "houseNum",
+                "region",
+                "kladrCode"
+              ],
+              "properties": {
+                "zipcode": {
+                  "type": "string",
+                  "example": 117587,
+                  "pattern": "^\\d{5,6}$"
+                },
+                "city": {
+                  "type": "string",
+                  "example": "Москва"
+                },
+                "street": {
+                  "type": "string",
+                  "example": "Кировоградская"
+                },
+                "apartment": {
+                  "type": "string",
+                  "example": 12
+                },
+                "houseNum": {
+                  "type": "string",
+                  "example": 12
+                },
+                "region": {
+                  "type": "string",
+                  "example": "Иванов"
+                },
+                "kladrCode": {
+                  "type": "string",
+                  "example": "77000000000170700"
+                },
+                "pickupPointId": {
+                  "type": "integer",
+                  "example": 123123
+                }
+              }
             }
           }
         },
@@ -3323,6 +3634,270 @@
         },
         "shippedAt": {
           "type": "string"
+        }
+      }
+    },
+    "DeliveryInfo": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "delivery_service"
+        },
+        "name": {
+          "type": "string",
+          "example": "Курьерская доставка"
+        },
+        "serviceLevelTypes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "example": "economy"
+              },
+              "name": {
+                "type": "string",
+                "example": "Эконом (без примерки)"
+              }
+            }
+          }
+        }
+      }
+    },
+    "PickupPoints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "latitude": {
+            "type": "number",
+            "format": "double",
+            "example": 55.738176
+          },
+          "longitude": {
+            "type": "number",
+            "format": "double",
+            "example": 37.631595
+          },
+          "isTryonAllowed": {
+            "type": "boolean",
+            "example": true
+          },
+          "isRejectionAllowed": {
+            "type": "boolean",
+            "example": true
+          },
+          "isBankcardAccepted": {
+            "type": "boolean",
+            "example": true
+          },
+          "is24hours": {
+            "type": "boolean",
+            "example": false
+          },
+          "groupId": {
+            "type": "integer",
+            "example": 4
+          },
+          "id": {
+            "type": "integer",
+            "example": 16213
+          },
+          "name": {
+            "type": "string",
+            "example": "Новокузнецкая"
+          },
+          "city": {
+            "type": "string",
+            "example": "Москва"
+          },
+          "street": {
+            "type": "string",
+            "example": "Новокузнецкая"
+          },
+          "house": {
+            "type": "string",
+            "example": "11/13"
+          }
+        }
+      }
+    },
+    "PickupPoint": {
+      "type": "object",
+      "properties": {
+        "workTime": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "day": {
+                "type": "string",
+                "example": 1
+              },
+              "timeFrom": {
+                "type": "string",
+                "example": "09:00"
+              },
+              "timeTo": {
+                "type": "string",
+                "example": "21:00"
+              }
+            }
+          }
+        },
+        "storageDays": {
+          "type": "string",
+          "example": "7"
+        },
+        "phones": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "+7(499) 750-14-50"
+          }
+        },
+        "photos": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "//files.lmcdn.ru/delivery/ru/0f/8916b331488fe30edca26715fee5e20f.jpeg"
+          }
+        },
+        "communicationDescription": {
+          "type": "string",
+          "example": "Когда заказ поступит в пункт самовывоза, вам придет SMS. Пожалуйста, приходите за заказом только после получения SMS."
+        },
+        "serviceLevelTypes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "rejectionFee": {
+                "type": "integer",
+                "example": 0
+              },
+              "freeDeliveryNetThreshold": {
+                "type": "integer",
+                "example": null
+              },
+              "code": {
+                "type": "string",
+                "example": "economy"
+              },
+              "isRejectionAllowed": {
+                "type": "boolean",
+                "example": false
+              },
+              "isTryonAllowed": {
+                "type": "boolean",
+                "example": false
+              },
+              "availableDays": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "date": {
+                      "type": "string",
+                      "example": "2017-11-28"
+                    },
+                    "availableIntervals": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "start": {
+                            "type": "string",
+                            "example": "2017-11-28 00:00:00"
+                          },
+                          "end": {
+                            "type": "string",
+                            "example": "2017-11-28 23:59:59"
+                          },
+                          "id": {
+                            "type": "integer",
+                            "example": 442789969
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "deliveryPrice": {
+                "type": "integer",
+                "example": 123
+              },
+              "name": {
+                "type": "string",
+                "example": "Эконом (без примерки)"
+              }
+            }
+          }
+        },
+        "deliveryDateMin": {
+          "type": "string",
+          "example": "2017-11-28"
+        },
+        "deliveryDateMax": {
+          "type": "string",
+          "example": "2017-12-04"
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double",
+          "example": 52.608465
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double",
+          "example": 39.545276
+        },
+        "isTryonAllowed": {
+          "type": "boolean",
+          "example": false
+        },
+        "isRejectionAllowed": {
+          "type": "boolean",
+          "example": false
+        },
+        "isBankcardAccepted": {
+          "type": "boolean",
+          "example": true
+        },
+        "is24hours": {
+          "type": "boolean",
+          "example": false
+        },
+        "groupId": {
+          "type": "integer",
+          "example": 3
+        },
+        "id": {
+          "type": "integer",
+          "example": 36708
+        },
+        "name": {
+          "type": "string",
+          "example": "Липецк-29"
+        },
+        "city": {
+          "type": "string",
+          "example": "Липецк г"
+        },
+        "street": {
+          "type": "string",
+          "example": "Космонавтов ул"
+        },
+        "house": {
+          "type": "string",
+          "example": "98"
+        },
+        "undergroundStation": {
+          "type": "string",
+          "example": ""
         }
       }
     }
